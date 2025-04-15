@@ -1,7 +1,5 @@
 C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\blazor.boot.json
 C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\blazor.webassembly.js
-C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\BlazorApp1.mrfyi6cpkh.pdb
-C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\BlazorApp1.u3xj8dn3wr.wasm
 C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\Blazored.LocalStorage.12n6dz54qr.wasm
 C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\cs\Microsoft.CodeAnalysis.CSharp.resources.vylskahzzd.wasm
 C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.66fl3oyi5r.wasm
@@ -475,7 +473,6 @@ C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\zh
 C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\cs\Microsoft.CodeAnalysis.CSharp.resources.vylskahzzd.wasm.gz
 C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\System.Runtime.CompilerServices.Unsafe.92pittepr6.wasm.gz
 C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\Microsoft.EntityFrameworkCore.Relational.9pu5xsb1o8.wasm.gz
-C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\BlazorApp1.mrfyi6cpkh.pdb.gz
 C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\System.ComponentModel.Annotations.aws0gou7sm.wasm.gz
 C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\System.Threading.Overlapped.7e0yhag6uc.wasm.gz
 C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\System.Runtime.Serialization.Json.6hlg1ytzb8.wasm.gz
@@ -530,7 +527,6 @@ C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\Sy
 C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\System.Collections.Concurrent.kb0mdoldj7.wasm.gz
 C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\System.Globalization.Calendars.z563vklk8m.wasm.gz
 C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\System.AppContext.brstoo7rmv.wasm.gz
-C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\BlazorApp1.u3xj8dn3wr.wasm.gz
 C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\System.Composition.Hosting.0febfkavod.wasm.gz
 C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\System.Dynamic.Runtime.g26pucb82k.wasm.gz
 C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\System.Reflection.DispatchProxy.5k0oiq8v01.wasm.gz
@@ -1591,9 +1587,6 @@ C:\Users\selva\source\project1\BlazorApp1\obj\Debug\net9.0\compressed\96huy3zb7n
 C:\Users\selva\source\project1\BlazorApp1\obj\Debug\net9.0\compressed\33zbjmm7v7-tjcz0u77k5.gz
 C:\Users\selva\source\project1\BlazorApp1\obj\Debug\net9.0\compressed\jf60wa3jk8-tptq2av103.gz
 C:\Users\selva\source\project1\BlazorApp1\obj\Debug\net9.0\compressed\0hs4oe2w70-lfu7j35m59.gz
-C:\Users\selva\source\project1\BlazorApp1\obj\Debug\net9.0\compressed\rx7sjm95zc-u3xj8dn3wr.gz
-C:\Users\selva\source\project1\BlazorApp1\obj\Debug\net9.0\compressed\kpn7vtgf7q-mrfyi6cpkh.gz
-C:\Users\selva\source\project1\BlazorApp1\obj\Debug\net9.0\compressed\5jzqasczcu-bs0xypf1ev.gz
 C:\Users\selva\source\project1\BlazorApp1\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\selva\source\project1\BlazorApp1\obj\Debug\net9.0\staticwebassets.development.json
 C:\Users\selva\source\project1\BlazorApp1\obj\Debug\net9.0\staticwebassets.build.endpoints.json
@@ -1609,3 +1602,11 @@ C:\Users\selva\source\project1\BlazorApp1\obj\Debug\net9.0\BlazorApp1.dll
 C:\Users\selva\source\project1\BlazorApp1\obj\Debug\net9.0\refint\BlazorApp1.dll
 C:\Users\selva\source\project1\BlazorApp1\obj\Debug\net9.0\BlazorApp1.pdb
 C:\Users\selva\source\project1\BlazorApp1\obj\Debug\net9.0\ref\BlazorApp1.dll
+C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\BlazorApp1.y8pb0nfzrs.pdb
+C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\BlazorApp1.7x4ul8wqya.wasm
+C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\BlazorApp1.y8pb0nfzrs.pdb.gz
+C:\Users\selva\source\project1\BlazorApp1\bin\Debug\net9.0\wwwroot\_framework\BlazorApp1.7x4ul8wqya.wasm.gz
+C:\Users\selva\source\project1\BlazorApp1\obj\Debug\net9.0\BlazorApp1.sourcelink.json
+C:\Users\selva\source\project1\BlazorApp1\obj\Debug\net9.0\compressed\rx7sjm95zc-7x4ul8wqya.gz
+C:\Users\selva\source\project1\BlazorApp1\obj\Debug\net9.0\compressed\kpn7vtgf7q-y8pb0nfzrs.gz
+C:\Users\selva\source\project1\BlazorApp1\obj\Debug\net9.0\compressed\5jzqasczcu-fzzqbmvce7.gz
