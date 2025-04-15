@@ -1,0 +1,120 @@
+﻿@using BlazorApp1.Model
+@code {
+    [Parameter] public Student Student { get; set; } = new Student();
+}
+
+<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <td><b>Roll Number</b></td>
+            <td>@Student.RollNumber</td>
+        </tr>
+        <tr>
+            <td><b>Name</b></td>
+            <td>@Student.Name</td>
+        </tr>
+        <tr>
+            <td><b>Gender</b></td>
+            <td>@Student.Gender</td>
+        </tr>
+        <tr>
+            <td><b>Date of Birth</b></td>
+            <td>@Student.DateOfBirth?.ToShortDateString() ?? "N/A")</td>
+           
+
+        </tr>
+        <tr>
+            <td><b>Permanent Education Number</b></td>
+            <td>@Student.PermanentEducationNumber</td>
+        </tr>
+        <tr>
+            <td><b>Mother Name</b></td>
+            <td>@Student.MotherName</td>
+        </tr>
+        <tr>
+            <td><b>Father Name</b></td>
+            <td>@Student.FatherName</td>
+        </tr>
+        <tr>
+            <td><b>Guardian Name</b></td>
+            <td>@Student.GuardianName</td>
+        </tr>
+        <tr>
+            <td><b>Aadhar Number</b></td>
+            <td>@Student.AadharNumber</td>
+        </tr>
+        <tr>
+            <td><b>Address</b></td>
+            <td>@Student.Address</td>
+        </tr>
+        <tr>
+            <td><b>Pincode</b></td>
+            <td>@Student.Pincode</td>
+        </tr>
+        <tr>
+            <td><b>Mobile Number</b></td>
+            <td>@Student.MobileNumber</td>
+        </tr>
+        <tr>
+            <td><b>Email</b></td>
+            <td>@Student.Email</td>
+        </tr>
+        <tr>
+            <td><b>Mother Tongue</b></td>
+            <td>@Student.MotherTongue</td>
+        </tr>
+        <tr>
+            <td><b>Social Category</b></td>
+            <td>@Student.SocialCategory</td>
+        </tr>
+        <tr>
+            <td><b>Minority Group</b></td>
+            <td>@Student.MinorityGroup</td>
+        </tr>
+        <tr>
+            <td><b>BPL Beneficiary</b></td>
+            <td>@Student.IsBPLBeneficiary</td>
+        </tr>
+        <tr>
+            <td><b>AAY Beneficiary</b></td>
+            <td>@Student.IsAAYBeneficiary</td>
+        </tr>
+        <tr>
+            <td><b>EWS</b></td>
+            <td>@Student.IsEWS</td>
+        </tr>
+        <tr>
+            <td><b>CWSN</b></td>
+            <td>@Student.IsCWSN</td>
+        </tr>
+        <tr>
+            <td><b>Type of Impairment</b></td>
+            <td>@Student.TypeOfImpairment</td>
+        </tr>
+        <tr>
+            <td><b>Indian Citizen</b></td>
+            <td>@Student.IsIndian</td>
+        </tr>
+        <tr>
+            <td><b>Out of School</b></td>
+            <td>@Student.IsOutOfSchool</td>
+        </tr>
+        <tr>
+            <td><b>Mainstream Date</b></td>
+            <td>@Student.MainstreamDate?.ToString("yyyy-MM-dd")</td>
+        </tr>
+        <tr>
+            <td><b>Disability Certificate</b></td>
+            <td>@Student.HasDisabilityCertificate</td>
+        </tr>
+        <tr>
+            <td><b>Disability Percentage</b></td>
+            <td>@Student.DisabilityPercentage%</td>
+        </tr>
+        <tr>
+            <td><b>Blood Group</b></td>
+            <td>@Student.BloodGroup</td>
+        </tr>
+    </tbody>
+</table>
+

@@ -1,0 +1,120 @@
+﻿@page "/students-list"
+@inject IStudentService StudentService
+@inject NavigationManager Navigation
+
+<h3 class="title">🎓 Student Management</h3>
+<div class="d-flex justify-content-between mb-3">
+    <a class="accordion-header" href="/student/add"> Add Student</a>
+   
+    <input @bind="searchQuery" @bind:event="oninput" class="form-control w-25" placeholder="🔍 Search by Name or Reg No..." />
+   
+    <div class="d-flex gap-2">
+    <button class="btn btn-primary " @onclick="ExportExcel">📄 Export Excel</button><button class="btn btn-primary " @onclick="ExportPDF">📑 Export PDF</button>
+    </div>
+</div>
+<table class="table table-custom table-hover table-bordered">
+
+    <thead class="table-dark">
+        <tr>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Date of Birth</th>
+            <th>PEN</th>
+            <th>Mother Name</th>
+            <th>Father Name</th>
+            <th>Guardian Name</th>
+            <th>Aadhar No</th>
+            <th>Aadhar name</th>
+            <th>Address</th>
+            <th>Pincode</th>
+            <th>Mobile</th>
+            <th>Alt Mobile</th>
+            <th>Email</th>
+            <th>Mother Tongue</th>
+            <th>Social Category</th>
+            <th>Minority Group</th>
+            <th>BPL Beneficiary</th>
+            <th>AAY Beneficiary</th>
+            <th>EWS</th>
+            <th>CWSN</th>
+            <th>Impairment Type</th>
+            <th>Indian?</th>
+            <th>Out of School?</th>
+            <th>Mainstream Date</th>
+            <th>Has Disability Cert?</th>
+            <th>Disability %</th>
+            <th>Blood Group</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Students.Where(f =>
+        string.IsNullOrWhiteSpace(searchQuery) ||
+        f.Name.ToLower().Contains(searchQuery.ToLower()) ||
+        f.RollNumber.ToString().Contains(searchQuery))
+        .ToList())
+        {
+            <tr>
+                <td>@student.RollNumber</td>
+                <td>@student.Name</td>
+                <td>@student.Gender</td>
+                <td>@(student.DateOfBirth?.ToString("yyyy-MM-dd"))</td>
+                <td>@student.PermanentEducationNumber</td>
+                <td>@student.MotherName</td>
+                <td>@student.FatherName</td>
+                <td>@student.GuardianName</td>
+                <td>@student.AadharNumber</td>
+                <td>@student.NameOnAadhar</td>
+                <td>@student.Address</td>
+                <td>@student.Pincode</td>
+                <td>@student.MobileNumber</td>
+                <td>@student.AlternateMobileNumber</td>
+                <td>@student.Email</td>
+                <td>@student.MotherTongue</td>
+                <td>@student.SocialCategory</td>
+                <td>@student.MinorityGroup</td>
+                <td>@student.IsBPLBeneficiary</td>
+                <td>@student.IsAAYBeneficiary</td>
+                <td>@student.IsEWS</td>
+                <td>@student.IsCWSN</td>
+                <td>@student.TypeOfImpairment</td>
+                <td>@student.IsIndian</td>
+                <td>@student.IsOutOfSchool</td>
+                <td>@student.MainstreamDate</td>
+                <td>@student.HasDisabilityCertificate</td>
+                <td>@student.DisabilityPercentage%</td>
+                <td>@student.BloodGroup</td>
+                <td style="white-space:nowrap">
+                    <div class="d-flex gap-2">
+                    <button class="btn btn-primary btn-sm w-100" @onclick="() => EditStudent(student.Id)">✏ Edit</button>
+                    <button class="btn btn-primary btn-sm w-100" @onclick="() => DeleteStudent(student.Id)">🗑 Delete</button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private List<Student> Students = new();
+    private string searchQuery = "";
+    protected override async Task OnInitializedAsync()
+    {
+        Students = await StudentService.GetStudents();
+    }
+
+
+
+    private void EditStudent(int id) => Navigation.NavigateTo($"/student-form/{id:int?}");
+
+    private async Task DeleteStudent(int id)
+    {
+        await StudentService.DeleteStudent(id);
+        Students = await StudentService.GetStudents();
+    }
+
+    private async Task ExportExcel() => await StudentService.ExportToExcel();
+
+    private async Task ExportPDF() => await StudentService.ExportToPDF();
+}

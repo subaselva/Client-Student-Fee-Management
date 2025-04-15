@@ -1,0 +1,162 @@
+﻿@page "/student-form/{id:int?}"
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+<h3>Student Form</h3>
+
+@if (student == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <form @onsubmit="SaveStudent">
+        <label>Roll Number:</label>
+        <input @bind="student.RollNumber" disabled /><br />
+
+        <label>Name:</label>
+        <input @bind="student.Name" required /><br />
+
+        <label>Gender:</label>
+        <select @bind="student.Gender">
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+        </select><br />
+
+        <label>Date of Birth:</label>
+        <input type="date" @bind="student.DateOfBirth" /><br />
+
+        <label>PEN:</label>
+        <input @bind="student.PermanentEducationNumber" /><br />
+
+        <label>Mother Name:</label>
+        <input @bind="student.MotherName" /><br />
+
+        <label>Father Name:</label>
+        <input @bind="student.FatherName" /><br />
+
+        <label>Guardian Name:</label>
+        <input @bind="student.GuardianName" /><br />
+
+        <label>Aadhar Number:</label>
+        <input @bind="student.AadharNumber" /><br />
+
+        <label>Name on Aadhar:</label>
+        <input @bind="student.AadharNumber" /><br />
+
+        <label>Address:</label>
+        <textarea @bind="student.Address"></textarea><br />
+
+        <label>Pincode:</label>
+        <input @bind="student.Pincode" /><br />
+
+        <label>Mobile Number:</label>
+        <input @bind="student.MobileNumber" /><br />
+
+        <label>Alternate Mobile:</label>
+        <input @bind="student.AlternateMobileNumber" /><br />
+
+        <label>Email:</label>
+        <input type="email" @bind="student.Email" /><br />
+
+        <label>Mother Tongue:</label>
+        <input @bind="student.MotherTongue" /><br />
+
+        <label>Social Category:</label>
+        <input @bind="student.SocialCategory" /><br />
+
+        <label>Minority Group:</label>
+        <input @bind="student.MinorityGroup" /><br />
+
+        <label>BPL Beneficiary:</label>
+        <input type="checkbox" @bind="student.IsBPLBeneficiary" /><br />
+
+        <label>AAY Beneficiary:</label>
+        <input type="checkbox" @bind="student.IsAAYBeneficiary" /><br />
+
+        <label>EWS:</label>
+        <input type="checkbox" @bind="student.IsEWS" /><br />
+
+        <label>CWSN:</label>
+        <input type="checkbox" @bind="student.IsCWSN" /><br />
+
+        <label>Type of Impairment:</label>
+        <input @bind="student.TypeOfImpairment" /><br />
+
+        <label>Is Indian:</label>
+        <input type="checkbox" @bind="student.IsIndian" /><br />
+
+        <label>Is Out of School:</label>
+        <input type="checkbox" @bind="student.IsOutOfSchool" /><br />
+
+        <label>Mainstream Date:</label>
+        <input type="date" @bind="student.MainstreamDate" /><br />
+
+        <label>Has Disability Certificate:</label>
+        <input type="checkbox" @bind="student.HasDisabilityCertificate" /><br />
+
+        <label>Disability Percentage:</label>
+        <input type="number" @bind="student.DisabilityPercentage" /><br />
+
+        <label>Blood Group:</label>
+        <input @bind="student.BloodGroup" /><br />
+
+        <button type="submit">Save</button>
+    </form>
+}
+
+@code {
+    [Parameter] public int? id { get; set; }
+    private Student student = new Student();
+    private List<Student> students = new List<Student>();
+    private string searchTerm = "";
+    private int currentPage = 1;
+    private int pageSize = 10;
+    private int totalPages = 1;
+
+    protected override async Task OnInitializedAsync()
+    {
+        students = await Http.GetFromJsonAsync<List<Student>>("api/students/view-only");
+        totalPages = (int)Math.Ceiling((double)students.Count / pageSize);
+        if (id.HasValue)
+        {
+            student = await Http.GetFromJsonAsync<Student>($"api/students/view-only/{id}");
+        }
+    }
+
+    private async Task SaveStudent()
+    {
+        if (id.HasValue)
+        {
+            await Http.PutAsJsonAsync($"api/students/admin/edit/{id}", student);
+        }
+        else
+        {
+            await Http.PostAsJsonAsync("api/students/admin/add", student);
+        }
+        Navigation.NavigateTo("/students");
+    }
+
+    private void SearchStudents()
+    {
+        students = students.Where(s => s.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)).ToList();
+        totalPages = (int)Math.Ceiling((double)students.Count / pageSize);
+    }
+
+    private void NextPage()
+    {
+        if (currentPage < totalPages)
+        {
+            currentPage++;
+        }
+    }
+
+    private void PreviousPage()
+    {
+        if (currentPage > 1)
+        {
+            currentPage--;
+        }
+    }
+}
