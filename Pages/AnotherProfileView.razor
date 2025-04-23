@@ -1,0 +1,104 @@
+﻿@page "/another-profile-view/{Id:int}"
+@using BlazorApp1.Model
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+<h3>Another Profile Details</h3>
+
+@if (profile == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <td><b>ID</b></td>
+                <td>@profile.Id</td>
+            </tr>
+            <tr>
+                <td><b>Student ID</b></td>
+                <td>@profile.StudentId</td>
+            </tr>
+            <tr>
+                <td><b>Student Name</b></td>
+                <td>@profile.StudentName</td>
+            </tr>
+            <tr>
+                <td><b>Facilities Provided</b></td>
+                <td>@(profile.FacilitiesProvided ?? "N/A")</td>
+            </tr>
+            <tr>
+                <td><b>Is CWSN</b></td>
+                <td>@(profile.IsCWSN ?? "N/A")</td>
+            </tr>
+            <tr>
+                <td><b>Is SLD</b></td>
+                <td>@(profile.IsSLD ?? "N/A")</td>
+            </tr>
+            <tr>
+                <td><b>SLD Type</b></td>
+                <td>@(profile.SLDType ?? "N/A")</td>
+            </tr>
+            <tr>
+                <td><b>Is ASD</b></td>
+                <td>@(profile.IsASD ?? "N/A")</td>
+            </tr>
+            <tr>
+                <td><b>Is ADHD</b></td>
+                <td>@(profile.IsADHD ?? "N/A")</td>
+            </tr>
+            <tr>
+                <td><b>Is Gifted</b></td>
+                <td>@(profile.IsGifted ?? "N/A")</td>
+            </tr>
+            <tr>
+                <td><b>Is In State Competition</b></td>
+                <td>@(profile.IsInStateCompetition ?? "N/A")</td>
+            </tr>
+            <tr>
+                <td><b>Is In NCC/NSS</b></td>
+                <td>@(profile.IsInNCC_NSS ?? "N/A")</td>
+            </tr>
+            <tr>
+                <td><b>Is Internet User</b></td>
+                <td>@(profile.IsInUseInternet ?? "N/A")</td>
+            </tr>
+            <tr>
+                <td><b>Is Internet User</b></td>
+                <td>@(profile.Height ?? "N/A")</td>
+            </tr>
+            <tr>
+                <td><b>Is Internet User</b></td>
+                <td>@(profile.Weight ?? "N/A")</td>
+            </tr>
+            <tr>
+                <td><b>Is Internet User</b></td>
+                <td>@(profile.Residencetoschool ?? "N/A")</td>
+            </tr>
+            <tr>
+                <td><b>Is Internet User</b></td>
+                <td>@(profile.Educationinfamily ?? "N/A")</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button class="btn btn-secondary" @onclick="GoBack">Back to List</button>
+}
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    StudentProfile? profile;
+
+    protected override async Task OnInitializedAsync()
+    {
+        profile = await Http.GetFromJsonAsync<StudentProfile>($"api/StudentProfile/get/{Id}");
+    }
+
+    void GoBack()
+    {
+        Navigation.NavigateTo("/student-profile-list");
+    }
+}

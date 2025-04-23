@@ -1,0 +1,111 @@
+﻿@using BlazorApp1.Model
+@using Microsoft.AspNetCore.Components.Forms
+
+<EditForm Model="studentProfile" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label>Student Name</label>
+        <InputText @bind-Value="studentProfile.StudentName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Facilities Provided</label>
+        <InputText @bind-Value="studentProfile.FacilitiesProvided" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Is CWSN</label>
+        <InputText @bind-Value="studentProfile.IsCWSN" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Is SLD</label>
+        <InputText @bind-Value="studentProfile.IsSLD" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>SLD Type</label>
+        <InputText @bind-Value="studentProfile.SLDType" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Is ASD</label>
+        <InputText @bind-Value="studentProfile.IsASD" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Is ADHD</label>
+        <InputText @bind-Value="studentProfile.IsADHD" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Is Gifted</label>
+        <InputText @bind-Value="studentProfile.IsGifted" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>In State Competition</label>
+        <InputText @bind-Value="studentProfile.IsInStateCompetition" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>In NCC/NSS</label>
+        <InputText @bind-Value="studentProfile.IsInNCC_NSS" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Uses Internet</label>
+        <InputText @bind-Value="studentProfile.IsInUseInternet" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Height</label>
+        <InputText @bind-Value="studentProfile.Height" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Weight</label>
+        <InputText @bind-Value="studentProfile.Weight" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Residence to School Distance</label>
+        <InputText @bind-Value="studentProfile.Residencetoschool" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Education in Family</label>
+        <InputText @bind-Value="studentProfile.Educationinfamily" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</EditForm>
+
+
+
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+@code {
+    [Parameter] public StudentProfile studentProfile { get; set; } = new();
+
+    private async Task HandleValidSubmit()
+    {
+        // Call the API to update the student profile
+        var response = await Http.PutAsJsonAsync($"api/studentprofiles/{studentProfile.Id}", studentProfile);
+
+        if (response.IsSuccessStatusCode)
+        {
+            Console.WriteLine("Student Profile updated successfully!");
+            // Redirect after success (optional)
+            Navigation.NavigateTo("/student-profiles");
+        }
+        else
+        {
+            Console.WriteLine("Failed to update Student Profile.");
+            // Optional: show error to user
+        }
+    }
+}

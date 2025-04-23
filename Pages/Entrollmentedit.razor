@@ -1,0 +1,111 @@
+﻿@page "/edit-enrollment-detail/{id:int}"
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@using BlazorApp1.Model
+@using System.Net.Http.Json
+
+<h3>Edit Enrollment Details</h3>
+
+@if (enrollmentDetail == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <EditForm Model="enrollmentDetail" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label for="AdmissionNumber">Admission Number</label>
+            <InputNumber class="form-control" id="AdmissionNumber" @bind-Value="enrollmentDetail.AdmissionNumber" placeholder="Admission Number" />
+        </div>
+
+        <div class="form-group">
+            <label for="AdmissionDate">Admission Date</label>
+            <InputDate class="form-control" id="AdmissionDate" @bind-Value="enrollmentDetail.AdmissionDate" />
+        </div>
+
+        <div class="form-group">
+            <label for="ClassRollNo">Class Roll Number</label>
+            <InputNumber class="form-control" id="ClassRollNo" @bind-Value="enrollmentDetail.ClassRollNo" placeholder="Class Roll Number" />
+        </div>
+
+        <div class="form-group">
+            <label for="MediumOfInstruction">Medium Of Instruction</label>
+            <InputText class="form-control" id="MediumOfInstruction" @bind-Value="enrollmentDetail.MediumOfInstruction" placeholder="Medium Of Instruction" />
+        </div>
+
+        <div class="form-group">
+            <label for="LanguagesGroupStudied">Languages Group Studied</label>
+            <InputText class="form-control" id="LanguagesGroupStudied" @bind-Value="enrollmentDetail.LanguagesGroupStudied" placeholder="Languages Group Studied" />
+        </div>
+
+        <div class="form-group">
+            <label for="AcademicGroupStudied">Academic Group Studied</label>
+            <InputText class="form-control" id="AcademicGroupStudied" @bind-Value="enrollmentDetail.AcademicGroupStudied" placeholder="Academic Group Studied" />
+        </div>
+
+        <div class="form-group">
+            <label for="SubjectsGroupStudied">Subjects Group Studied</label>
+            <InputText class="form-control" id="SubjectsGroupStudied" @bind-Value="enrollmentDetail.SubjectsGroupStudied" placeholder="Subjects Group Studied" />
+        </div>
+
+        <div class="form-group">
+            <label for="PreviousAcademicYear">Previous Academic Year</label>
+            <InputText class="form-control" id="PreviousAcademicYear" @bind-Value="enrollmentDetail.PreviousAcademicYear" placeholder="Previous Academic Year" />
+        </div>
+
+        <div class="form-group">
+            <label for="StatusPreviousYear">Status Previous Year</label>
+            <InputText class="form-control" id="StatusPreviousYear" @bind-Value="enrollmentDetail.StatusPreviousYear" placeholder="Status Previous Year" />
+        </div>
+
+        <div class="form-group">
+            <label for="Admitted">Admitted</label>
+            <InputText class="form-control" id="Admitted" @bind-Value="enrollmentDetail.Admitted" placeholder="Admitted" />
+        </div>
+
+        <div class="form-group">
+            <label for="PreviousClass">Previous Class</label>
+            <InputText class="form-control" id="PreviousClass" @bind-Value="enrollmentDetail.PreviousClass" placeholder="Previous Class" />
+        </div>
+
+        <div class="form-group">
+            <label for="Marks">Marks</label>
+            <InputText class="form-control" id="Marks" @bind-Value="enrollmentDetail.Marks" placeholder="Marks" />
+        </div>
+
+        <div class="form-group">
+            <label for="PreviousAttendance">Previous Attendance</label>
+            <InputText class="form-control" id="PreviousAttendance" @bind-Value="enrollmentDetail.PreviousAttendance" placeholder="Previous Attendance" />
+        </div>
+
+        <button class="btn btn-primary mt-3" type="submit">Update</button>
+    </EditForm>
+}
+
+@code {
+    [Parameter] public int id { get; set; }
+    private EnrollmentDetail? enrollmentDetail;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Fetch enrollment detail from backend using the id
+        enrollmentDetail = await Http.GetFromJsonAsync<EnrollmentDetail>($"api/enrollmentdetails/{id}");
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        // Update the enrollment detail via API
+        var response = await Http.PutAsJsonAsync($"api/enrollmentdetails/{id}", enrollmentDetail);
+        if (response.IsSuccessStatusCode)
+        {
+            Navigation.NavigateTo("/students-list");
+        }
+        else
+        {
+            // Handle errors or log them here
+        }
+    }
+}

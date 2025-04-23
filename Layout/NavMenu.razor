@@ -1,4 +1,4 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿﻿<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <span></span> <!-- Keeps space empty without breaking layout -->
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
@@ -28,18 +28,28 @@
                 <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> StudentFeeDetails
             </NavLink>
         </div>
-         <AuthorizeView Roles="Accountant">
-            <Authorized>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/fee">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> StudentFeeManagement
+            <NavLink class="nav-link" href="/student-profile-list">
+                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> StudentFeeDetails
             </NavLink>
         </div>
-         </Authorized>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/studentfull">
+                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> StudentFeeDetails
+            </NavLink>
+        </div>
+        <AuthorizeView Roles="Accountant">
+            <Authorized>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="/fee">
+                        <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> StudentFeeManagement
+                    </NavLink>
+                </div>
+            </Authorized>
         </AuthorizeView>
-        
+
         <AuthorizeView Roles="CEO">
-            <Authorized>  
+            <Authorized>
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="/fee1">
                         <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span>CEOStudentFeeManagement
@@ -70,17 +80,17 @@
                         <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span>Ceo-Dashboard
                     </NavLink>
                 </div>
-              </Authorized>
+            </Authorized>
         </AuthorizeView>
-       
-       
+
+
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="/register">
                 <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Register
             </NavLink>
         </div>
-        
-        
+
+
     </nav>
 </div>
 

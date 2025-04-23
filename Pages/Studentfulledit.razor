@@ -1,0 +1,322 @@
+﻿@page "/edit-full-student/{id:int}"
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@using BlazorApp1.Model
+@using System.Net.Http.Json
+
+<h3>Edit Full Student Info</h3>
+
+@if (fullInfo == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <EditForm Model="fullInfo.Student" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <h4>Student</h4>
+        <div class="form-group">
+            <label for="Student RollNumber">Student RollNumber</label>
+            <InputText id="Roll Number" @bind-Value="fullInfo.Student.RollNumber" placeholder="Roll Number" class="form-control" />
+
+        </div>
+
+        <div class="form-group">
+            <label for="fullInfo.StudentName">fullInfo.Student Name</label>
+            <InputText @bind-Value="fullInfo.Student.Name" placeholder="Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="MobileNumber">MobileNumber</label>
+            <InputText @bind-Value="fullInfo.Student.MobileNumber" placeholder="Mobile Number" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="AlternateMobileNumber">AlternateMobileNumber</label>
+            <InputText @bind-Value="fullInfo.Student.AlternateMobileNumber" placeholder="Alternate Mobile" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <InputText @bind-Value="fullInfo.Student.Email" placeholder="Email" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="Gender">Gender</label>
+            <InputText @bind-Value="fullInfo.Student.Gender" placeholder="Gender" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="DateOfBirth">DateOfBirth</label>
+            <InputDate @bind-Value="fullInfo.Student.DateOfBirth" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="PermanentEducationNumber">PermanentEducationNumber</label>
+            <InputText @bind-Value="fullInfo.Student.PermanentEducationNumber" placeholder="PEN" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="MotherName">MotherName</label>
+            <InputText @bind-Value="fullInfo.Student.MotherName" placeholder="Mother's Name" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="FatherName">FatherName</label>
+            <InputText @bind-Value="fullInfo.Student.FatherName" placeholder="Father's Name" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="GuardianName">GuardianName</label>
+            <InputText @bind-Value="fullInfo.Student.GuardianName" placeholder="Guardian's Name" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="AadharNumber">AadharNumber</label>
+            <InputText @bind-Value="fullInfo.Student.AadharNumber" placeholder="Aadhar Number" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="NameOnAadhar">NameOnAadhar</label>
+            <InputText @bind-Value="fullInfo.Student.NameOnAadhar" placeholder="Name on Aadhar" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="Address">Address</label>
+            <InputText @bind-Value="fullInfo.Student.Address" placeholder="Address" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="Pincode">Pincode</label>
+            <InputText @bind-Value="fullInfo.Student.Pincode" placeholder="Pincode" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="MotherTongue">MotherTongue</label>
+            <InputText @bind-Value="fullInfo.Student.MotherTongue" placeholder="Mother Tongue" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="MinorityGroup">MinorityGroup</label>
+            <InputText @bind-Value="fullInfo.Student.MinorityGroup" placeholder="Minority Group" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="IsBPLBeneficiary">IsBPLBeneficiary</label>
+            <InputText @bind-Value="fullInfo.Student.IsBPLBeneficiary" placeholder="Is BPL Beneficiary" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="IsAAYBeneficiary">IsAAYBeneficiary</label>
+            <InputText @bind-Value="fullInfo.Student.IsAAYBeneficiary" placeholder="Is AAY Beneficiary" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="IsEWS">IsEWS</label>
+            <InputText @bind-Value="fullInfo.Student.IsEWS" placeholder="Is EWS" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="IsCWSN">IsCWSN</label>
+            <InputText @bind-Value="fullInfo.Student.IsCWSN" placeholder="Is CWSN" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="TypeOfImpairment">TypeOfImpairment</label>
+            <InputText @bind-Value="fullInfo.Student.TypeOfImpairment" placeholder="Type of Impairment" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="IsIndian">IsIndian</label>
+            <InputText @bind-Value="fullInfo.Student.IsIndian" placeholder="Is Indian" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="IsOutOfSchool">IsOutOfSchool</label>
+            <InputText @bind-Value="fullInfo.Student.IsOutOfSchool" placeholder="Is Out Of School" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="HasDisabilityCertificate">HasDisabilityCertificate</label>
+            <InputText @bind-Value="fullInfo.Student.HasDisabilityCertificate" placeholder="Has Disability Certificate" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="DisabilityPercentage">DisabilityPercentage</label>
+            <InputNumber @bind-Value="fullInfo.Student.DisabilityPercentage" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="BloodGroup">BloodGroup</label>
+            <InputText @bind-Value="fullInfo.Student.BloodGroup" placeholder="Blood Group" class="form-control" />
+        </div>
+
+
+        <h4>Profile</h4>
+        <div class="form-group">
+            <label>Student Name</label>
+            <InputText @bind-Value="fullInfo.Student.Profile.StudentName" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Facilities Provided</label>
+            <InputText @bind-Value="fullInfo.Student.Profile.FacilitiesProvided" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Is CWSN</label>
+            <InputText @bind-Value="fullInfo.Student.Profile.IsCWSN" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Is SLD</label>
+            <InputText @bind-Value="fullInfo.Student.Profile.IsSLD" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>SLD Type</label>
+            <InputText @bind-Value="fullInfo.Student.Profile.SLDType" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Is ASD</label>
+            <InputText @bind-Value="fullInfo.Student.Profile.IsASD" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Is ADHD</label>
+            <InputText @bind-Value="fullInfo.Student.Profile.IsADHD" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Is Gifted</label>
+            <InputText @bind-Value="fullInfo.Student.Profile.IsGifted" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>In State Competition</label>
+            <InputText @bind-Value="fullInfo.Student.Profile.IsInStateCompetition" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>In NCC/NSS</label>
+            <InputText @bind-Value="fullInfo.Student.Profile.IsInNCC_NSS" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Uses Internet</label>
+            <InputText @bind-Value="fullInfo.Student.Profile.IsInUseInternet" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Height</label>
+            <InputText @bind-Value="fullInfo.Student.Profile.Height" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Weight</label>
+            <InputText @bind-Value="fullInfo.Student.Profile.Weight" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Residence to School Distance</label>
+            <InputText @bind-Value="fullInfo.Student.Profile.Residencetoschool" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Education in Family</label>
+            <InputText @bind-Value="fullInfo.Student.Profile.Educationinfamily" class="form-control" />
+        </div>
+
+        <h4>Enrollment</h4>
+
+        <div class="form-group">
+            <label for="AdmissionNumber">Admission Number</label>
+            <InputNumber class="form-control" id="AdmissionNumber" @bind-Value="fullInfo.Student.Enrollment.AdmissionNumber" placeholder="Admission Number" />
+        </div>
+
+        <div class="form-group">
+            <label for="AdmissionDate">Admission Date</label>
+            <InputDate class="form-control" id="AdmissionDate" @bind-Value="fullInfo.Student.Enrollment.AdmissionDate" />
+        </div>
+
+        <div class="form-group">
+            <label for="ClassRollNo">Class Roll Number</label>
+            <InputNumber class="form-control" id="ClassRollNo" @bind-Value="fullInfo.Student.Enrollment.ClassRollNo" placeholder="Class Roll Number" />
+        </div>
+
+        <div class="form-group">
+            <label for="MediumOfInstruction">Medium Of Instruction</label>
+            <InputText class="form-control" id="MediumOfInstruction" @bind-Value="fullInfo.Student.Enrollment.MediumOfInstruction" placeholder="Medium Of Instruction" />
+        </div>
+
+        <div class="form-group">
+            <label for="LanguagesGroupStudied">Languages Group Studied</label>
+            <InputText class="form-control" id="LanguagesGroupStudied" @bind-Value="fullInfo.Student.Enrollment.LanguagesGroupStudied" placeholder="Languages Group Studied" />
+        </div>
+
+        <div class="form-group">
+            <label for="AcademicGroupStudied">Academic Group Studied</label>
+            <InputText class="form-control" id="AcademicGroupStudied" @bind-Value="fullInfo.Student.Enrollment.AcademicGroupStudied" placeholder="Academic Group Studied" />
+        </div>
+
+        <div class="form-group">
+            <label for="SubjectsGroupStudied">Subjects Group Studied</label>
+            <InputText class="form-control" id="SubjectsGroupStudied" @bind-Value="fullInfo.Student.Enrollment.SubjectsGroupStudied" placeholder="Subjects Group Studied" />
+        </div>
+
+        <div class="form-group">
+            <label for="PreviousAcademicYear">Previous Academic Year</label>
+            <InputText class="form-control" id="PreviousAcademicYear" @bind-Value="fullInfo.Student.Enrollment.PreviousAcademicYear" placeholder="Previous Academic Year" />
+        </div>
+
+        <div class="form-group">
+            <label for="StatusPreviousYear">Status Previous Year</label>
+            <InputText class="form-control" id="StatusPreviousYear" @bind-Value="fullInfo.Student.Enrollment.StatusPreviousYear" placeholder="Status Previous Year" />
+        </div>
+
+        <div class="form-group">
+            <label for="Admitted">Admitted</label>
+            <InputText class="form-control" id="Admitted" @bind-Value="fullInfo.Student.Enrollment.Admitted" placeholder="Admitted" />
+        </div>
+
+        <div class="form-group">
+            <label for="PreviousClass">Previous Class</label>
+            <InputText class="form-control" id="PreviousClass" @bind-Value="fullInfo.Student.Enrollment.PreviousClass" placeholder="Previous Class" />
+        </div>
+
+        <div class="form-group">
+            <label for="Marks">Marks</label>
+            <InputText class="form-control" id="Marks" @bind-Value="fullInfo.Student.Enrollment.Marks" placeholder="Marks" />
+        </div>
+
+        <div class="form-group">
+            <label for="PreviousAttendance">Previous Attendance</label>
+            <InputText class="form-control" id="PreviousAttendance" @bind-Value="fullInfo.Student.Enrollment.PreviousAttendance" placeholder="Previous Attendance" />
+        </div>
+
+        <button class="btn btn-primary mt-3" type="submit">Update</button>
+    </EditForm>
+}
+@code {
+    [Parameter] public int id { get; set; }
+    private FullStudentInfo? fullInfo;
+
+    protected override async Task OnInitializedAsync()
+    {
+        fullInfo = await Http.GetFromJsonAsync<FullStudentInfo>($"api/students/fullview/{id}");
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        var response = await Http.PutAsJsonAsync($"api/students/{id}", fullInfo);
+        if (response.IsSuccessStatusCode)
+        {
+            Navigation.NavigateTo("/students-list");
+        }
+        else
+        {
+            // Optional: Show error
+        }
+    }
+}

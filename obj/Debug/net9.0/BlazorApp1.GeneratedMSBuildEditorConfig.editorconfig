@@ -39,84 +39,112 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/selva/source/project1/BlazorApp1/Pages/Audit.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXVkaXQucmF6b3I=
+[C:/Users/selva/source/project1/BlazorApp1/Pages/AnotherProfileView.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5vdGhlclByb2ZpbGVWaWV3LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/selva/source/project1/BlazorApp1/Pages/CeoEdit.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2VvRWRpdC5yYXpvcg==
+[C:/Users/selva/source/project1/BlazorApp1/Pages/EnrollmentDetailView.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW5yb2xsbWVudERldGFpbFZpZXcucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/selva/source/project1/BlazorApp1/Pages/CeoFeeManagement.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2VvRmVlTWFuYWdlbWVudC5yYXpvcg==
+[C:/Users/selva/source/project1/BlazorApp1/Pages/Entrollmentedit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW50cm9sbG1lbnRlZGl0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/selva/source/project1/BlazorApp1/Pages/CeosDashboard.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2Vvc0Rhc2hib2FyZC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/selva/source/project1/BlazorApp1/Pages/Edit.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/selva/source/project1/BlazorApp1/Pages/Feeadd.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmVlYWRkLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/selva/source/project1/BlazorApp1/Pages/Fees.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmVlcy5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/selva/source/project1/BlazorApp1/Pages/FeesCalendar.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmVlc0NhbGVuZGFyLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/selva/source/project1/BlazorApp1/Pages/Home.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/selva/source/project1/BlazorApp1/Pages/Login.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/selva/source/project1/BlazorApp1/Pages/Logout.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0LnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/selva/source/project1/BlazorApp1/Pages/Register.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/selva/source/project1/BlazorApp1/Pages/Roles.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm9sZXMucmF6b3I=
+[C:/Users/selva/source/project1/BlazorApp1/Pages/ProfileEdit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZmlsZUVkaXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/selva/source/project1/BlazorApp1/Pages/StudentDetails.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudERldGFpbHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/selva/source/project1/BlazorApp1/Pages/Studentedit.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudGVkaXQucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/selva/source/project1/BlazorApp1/Pages/StudentForm.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudEZvcm0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/selva/source/project1/BlazorApp1/Pages/StudentFull.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudEZ1bGwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/selva/source/project1/BlazorApp1/Pages/Studentfulledit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudGZ1bGxlZGl0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/selva/source/project1/BlazorApp1/Pages/StudentList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudExpc3QucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/selva/source/project1/BlazorApp1/Pages/StudentProfileList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudFByb2ZpbGVMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/selva/source/project1/BlazorApp1/Pages/StudentProfileView.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudFByb2ZpbGVWaWV3LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/selva/source/project1/BlazorApp1/Pages/StudentView.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudFZpZXcucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/selva/source/project1/BlazorApp1/Pages/UserRoles.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlclJvbGVzLnJhem9y
+[C:/Users/selva/source/project1/BlazorApp1/Page/Audit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZVxBdWRpdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/selva/source/project1/BlazorApp1/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2VhdGhlci5yYXpvcg==
+[C:/Users/selva/source/project1/BlazorApp1/Page/CeoEdit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZVxDZW9FZGl0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/selva/source/project1/BlazorApp1/Page/CeoFeeManagement.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZVxDZW9GZWVNYW5hZ2VtZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/selva/source/project1/BlazorApp1/Page/CeosDashboard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZVxDZW9zRGFzaGJvYXJkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/selva/source/project1/BlazorApp1/Page/Edit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZVxFZGl0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/selva/source/project1/BlazorApp1/Page/Feeadd.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZVxGZWVhZGQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/selva/source/project1/BlazorApp1/Page/Fees.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZVxGZWVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/selva/source/project1/BlazorApp1/Page/FeesCalendar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZVxGZWVzQ2FsZW5kYXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/selva/source/project1/BlazorApp1/Page/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZVxIb21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/selva/source/project1/BlazorApp1/Page/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZVxMb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/selva/source/project1/BlazorApp1/Page/Logout.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZVxMb2dvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/selva/source/project1/BlazorApp1/Page/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZVxSZWdpc3Rlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/selva/source/project1/BlazorApp1/Page/Roles.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZVxSb2xlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/selva/source/project1/BlazorApp1/Page/UserRoles.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZVxVc2VyUm9sZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/selva/source/project1/BlazorApp1/Page/Weather.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZVxXZWF0aGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/selva/source/project1/BlazorApp1/_Imports.razor]

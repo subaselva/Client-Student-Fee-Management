@@ -1,0 +1,2 @@
+C:\Users\selva\source\project1\BlazorApp1\wwwroot\lib\bootstrap\dist\js\scrollHelper.js
+C:\Users\selva\source\project1\BlazorApp1\wwwroot\lib\bootstrap\dist\css\app1.css

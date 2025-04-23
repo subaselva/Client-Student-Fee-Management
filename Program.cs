@@ -16,7 +16,7 @@ var apiBaseUrl = "https://localhost:7048/";
 // Define API base address conditionally
 if (builder.HostEnvironment.IsProduction())
 {
-     apiBaseUrl  = "https://studentfeemanagement20250319211253-begfhwgnedd5b0ef.eastus2-01.azurewebsites.net/";
+     apiBaseUrl  = "https://vertical-living-atgtb5bshwahatg4.eastus2-01.azurewebsites.net/";
 }
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(apiBaseUrl) });
