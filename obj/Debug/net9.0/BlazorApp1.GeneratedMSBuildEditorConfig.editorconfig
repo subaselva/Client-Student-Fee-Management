@@ -39,12 +39,20 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/selva/source/project1/BlazorApp1/Pages/AnotherEnrollementView.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5vdGhlckVucm9sbGVtZW50Vmlldy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/selva/source/project1/BlazorApp1/Pages/AnotherProfileView.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5vdGhlclByb2ZpbGVWaWV3LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/selva/source/project1/BlazorApp1/Pages/EnrollmentDetailView.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW5yb2xsbWVudERldGFpbFZpZXcucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/selva/source/project1/BlazorApp1/Pages/Entrollmentdetail.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW50cm9sbG1lbnRkZXRhaWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/selva/source/project1/BlazorApp1/Pages/Entrollmentedit.razor]
@@ -129,6 +137,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/selva/source/project1/BlazorApp1/Page/Logout.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZVxMb2dvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/selva/source/project1/BlazorApp1/Page/Recovery.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZVxSZWNvdmVyeS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/selva/source/project1/BlazorApp1/Page/Register.razor]

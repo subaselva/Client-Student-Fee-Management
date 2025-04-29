@@ -54,21 +54,25 @@
             <div class="card text-white bg-warning mb-3">
                 <div class="card-header">📝 Pending Approvals</div>
                 <div class="card-body text-center">
-                    <h3 class="card-title">@pendingApprovals</h3>
+                    <h3 class="card-title">@((pendingApprovals + pendingDeleteRequests))</h3>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 
 @code {
     private FeeSummary feeSummary = new();
     private int pendingApprovals = 0;
+    private int pendingDeleteRequests = 0;
 
     protected override async Task OnInitializedAsync()
     {
+        // Fetch data for fee summary, pending approvals, and delete requests
         await FetchFeeSummary();
         await FetchPendingApprovals();
+        await FetchDeleteRequests(); // Call FetchDeleteRequests to get pending delete requests
     }
 
     private async Task FetchFeeSummary()
@@ -83,5 +87,11 @@
         {
             pendingApprovals = response.Count;
         }
+    }
+
+    private async Task FetchDeleteRequests()
+    {
+        var deleteRequests = await Http.GetFromJsonAsync<List<DeleteRequestDto>>("api/StudentFees/DeleteRequests") ?? new List<DeleteRequestDto>();
+        pendingDeleteRequests = deleteRequests.Count;
     }
 }

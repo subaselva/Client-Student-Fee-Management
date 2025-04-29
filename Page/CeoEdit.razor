@@ -18,7 +18,9 @@ else
 
         <div class="form-group">
             <label for="StudentName">Student Name</label>
+            <ValidationMessage For="@(() => studentFee.StudentName)" />
             <InputText id="StudentName" class="form-control" @bind-Value="studentFee.StudentName"/>
+             
         </div>
 
         <div class="form-group">
@@ -28,7 +30,9 @@ else
 
         <div class="form-group">
             <label for="IsClassStudent">Class</label>
+            <ValidationMessage For="@(() => studentFee.ClassSection)" />
             <InputText id="IsClassStudent" class="form-control" @bind-Value="studentFee.ClassSection" />
+            
         </div>
 
         <fieldset>
@@ -128,6 +132,7 @@ else
         <div class="form-group">
             <label for="WhatsAppNumber">WhatsAppNumber</label>
             <InputText id="WhatsAppNumber" class="form-control" @bind-Value="studentFee.WhatsAppNumber" />
+             <ValidationMessage For="@(() => studentFee.WhatsAppNumber)" />
         </div>
         <td style="white-space:nowrap">
             <button type="submit" class="btn btn-primary btn-group-sm">Update</button>

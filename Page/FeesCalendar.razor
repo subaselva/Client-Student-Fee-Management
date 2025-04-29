@@ -15,8 +15,6 @@
         <div class="input-container">
             <input type="text" id="calendarInput" class="flatpickr-input custom-input" placeholder="Select a date" />
         </div>
-
-       
     </MudCardContent>
 </MudCard>
 
@@ -31,23 +29,21 @@
                     <strong>@fee.StudentName</strong> (Reg No: <strong>@fee.RegistrationNumber</strong>)
                 </MudText>
 
-                @if (fee.AdmissionAmountPaid.HasValue)
+                @if (fee.AdmissionDate.HasValue && fee.AdmissionDate.Value.Date == _chosenDate?.Date)
                 {
-                    <MudText Color="Color.Primary">
+                    <MudText>
                         🎓 Admission Fee: <strong>@fee.AdmissionFee</strong> | Paid: <strong>@fee.AdmissionAmountPaid</strong>
                     </MudText>
                 }
-
-                @if (fee.FirstTermAmountPaid.HasValue)
+                @if (fee.FirstTermDate.HasValue && fee.FirstTermDate.Value.Date == _chosenDate?.Date)
                 {
-                    <MudText Color="Color.Primary">
+                    <MudText>
                         📚 First Term Fee: <strong>@fee.FirstTermFee</strong> | Paid: <strong>@fee.FirstTermAmountPaid</strong>
                     </MudText>
                 }
-
-                @if (fee.SecondTermAmountPaid.HasValue)
+                @if (fee.SecondTermDate.HasValue && fee.SecondTermDate.Value.Date == _chosenDate?.Date)
                 {
-                    <MudText Color="Color.Primary">
+                    <MudText>
                         🏆 Second Term Fee: <strong>@fee.SecondTermFee</strong> | Paid: <strong>@fee.SecondTermAmountPaid</strong>
                     </MudText>
                 }
@@ -64,11 +60,13 @@ else if (_chosenDate.HasValue)
 @code {
     private DateTime? _chosenDate = DateTime.Today;
     private List<StudentFee> fees = new();
+    private bool isLoading = false;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
+            // Initialize flatpickr on first render
             await JS.InvokeVoidAsync("initializeFlatpickr", DotNetObjectReference.Create(this));
         }
     }
@@ -88,11 +86,17 @@ else if (_chosenDate.HasValue)
     {
         if (_chosenDate.HasValue)
         {
+            isLoading = true; // Set loading state to true
             var formattedDate = _chosenDate.Value.ToString("yyyy-MM-dd");
 
             try
             {
                 fees = await Http.GetFromJsonAsync<List<StudentFee>>($"api/StudentFees/GetFeesByDate?selectedDate={formattedDate}") ?? new();
+                if (fees.Count == 0)
+                {
+                    fees = null; // No data found
+                }
+                StateHasChanged(); // Ensure UI updates after data is fetched
             }
             catch (HttpRequestException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
@@ -101,6 +105,11 @@ else if (_chosenDate.HasValue)
             catch (Exception ex)
             {
                 Console.WriteLine($"Error fetching data: {ex.Message}");
+                fees = null; // Error handling
+            }
+            finally
+            {
+                isLoading = false; // Set loading state to false after fetching data
             }
         }
     }

@@ -4,451 +4,459 @@
 @inject NavigationManager Navigation
 <h3 class="title">Add Student</h3>
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow-lg border-0 rounded-3">
-                <div class="card-header bg-primary text-white text-center">
-                    <h4>Add Full Student Information</h4>
+
+
+<EditForm Model="fullStudent.Student" OnValidSubmit="HandleValidSubmit" >
+    <DataAnnotationsValidator />
+    <ObjectGraphDataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="container-fluid">
+        <!-- STUDENT DETAILS -->
+        <div class="card p-4 mb-5 shadow-sm rounded-2xl">
+            <h4 class="mb-4">Student Details</h4>
+           
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label for="RollNumber">Roll Number</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.RollNumber)" />
+                    <InputText id="RollNumber" @bind-Value="fullStudent.Student.RollNumber" placeholder="Roll Number" class="form-control " />
+
                 </div>
 
-<EditForm Model="fullStudent" OnValidSubmit="HandleValidSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <div class="card-body">
-    <div class="step-container">
-        <!-- Progress Bar -->
-        <div class="progress-bar">
-            <div class="progress" style="width: @(currentStep * 33)%"></div>
+                <div class="col-md-3">
+                    <label for="StudentName">Student Name</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Name)" />
+                    <InputText id="StudentName" @bind-Value="fullStudent.Student.Name" placeholder="Name" class="form-control " />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="Gender">Gender</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Gender)" />
+                    <InputSelect id="Gender" @bind-Value="fullStudent.Student.Gender" class="form-control ">
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </InputSelect>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="DateOfBirth">Date of Birth</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.DateOfBirth)" />
+                    <InputDate id="DateOfBirth" @bind-Value="fullStudent.Student.DateOfBirth" class="form-control " />
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label for="MobileNumber">Mobile Number</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.MobileNumber)" />
+                    <InputText @bind-Value="fullStudent.Student.MobileNumber" placeholder="Mobile Number" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="AlternateMobileNumber">Alternate Mobile Number</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.AlternateMobileNumber)" />
+                    <InputText @bind-Value="fullStudent.Student.AlternateMobileNumber" placeholder="Alternate Mobile" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="Email">Email</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Email)" />
+                    <InputText @bind-Value="fullStudent.Student.Email" placeholder="Email" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="PermanentEducationNumber">Permanent Education Number</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.PermanentEducationNumber)" />
+                    <InputText @bind-Value="fullStudent.Student.PermanentEducationNumber" placeholder="PEN" class="form-control" />
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label for="MotherName">Mother's Name</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.MotherName)" />
+                    <InputText @bind-Value="fullStudent.Student.MotherName" placeholder="Mother's Name" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="FatherName">Father's Name</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.FatherName)" />
+                    <InputText @bind-Value="fullStudent.Student.FatherName" placeholder="Father's Name" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="GuardianName">Guardian's Name</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.GuardianName)" />
+                    <InputText @bind-Value="fullStudent.Student.GuardianName" placeholder="Guardian's Name" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="AadharNumber">Aadhar Number</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.AadharNumber)" />
+                    <InputText @bind-Value="fullStudent.Student.AadharNumber" placeholder="Aadhar Number" class="form-control" />
+                </div>
+            </div>
+
+
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label for="NameOnAadhar">Name on Aadhar</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.NameOnAadhar)" />
+                    <InputText @bind-Value="fullStudent.Student.NameOnAadhar" placeholder="Name on Aadhar" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="BloodGroup">Blood Group</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.BloodGroup)" />
+                    <InputSelect id="BloodGroup" @bind-Value="fullStudent.Student.BloodGroup" class="form-control ">
+                        <option value="">Select Blood Group</option>
+                        <option value="A+">A+</option>
+                        <option value="B+">B+</option>
+                        <option value="O+">O+</option>
+                        <option value="AB+">AB+</option>
+                        <option value="A-">A-</option>
+                        <option value="B-">B-</option>
+                        <option value="O-">O-</option>
+                        <option value="AB-">AB-</option>
+                    </InputSelect>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="Address">Address</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Address)" />
+                    <InputText @bind-Value="fullStudent.Student.Address" placeholder="Address" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="Pincode">Pincode</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Pincode)" />
+                    <InputText @bind-Value="fullStudent.Student.Pincode" placeholder="Pincode" class="form-control" />
+                </div>
+            </div>
+            <div class="row g-3">
+
+                <div class="col-md-3">
+                    <label for="MotherTongue">Mother Tongue</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.MotherTongue)" />
+                    <InputText @bind-Value="fullStudent.Student.MotherTongue" placeholder="Mother Tongue" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="SocialCategory">Social Category</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.SocialCategory)" />
+                    <InputText @bind-Value="fullStudent.Student.SocialCategory" placeholder="Social Category" class="form-control " />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="MinorityGroup">Minority Group</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.MinorityGroup)" />
+                    <InputText @bind-Value="fullStudent.Student.MinorityGroup" placeholder="Minority Group" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="IsBPLBeneficiary">Is BPL Beneficiary</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.IsBPLBeneficiary)" />
+                    <InputText @bind-Value="fullStudent.Student.IsBPLBeneficiary" placeholder="Is BPL Beneficiary" class="form-control " />
+                </div>
+            </div>
+
+
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label for="IsAAYBeneficiary">Is AAY Beneficiary</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.IsAAYBeneficiary)" />
+                    <InputText @bind-Value="fullStudent.Student.IsAAYBeneficiary" placeholder="Is AAY Beneficiary" class="form-control " />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="IsEWS">Is EWS</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.IsEWS)" />
+                    <InputText @bind-Value="fullStudent.Student.IsEWS" placeholder="Is EWS" class="form-control " />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="IsCWSN">Is CWSN</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.IsCWSN)" />
+                    <InputText @bind-Value="fullStudent.Student.IsCWSN" placeholder="Is CWSN" class="form-control" />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="TypeOfImpairment">Type of Impairment</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.TypeOfImpairment)" />
+                    <InputText @bind-Value="fullStudent.Student.TypeOfImpairment" placeholder="Type of Impairment" class="form-control " />
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label for="IsIndian">Is Indian</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.IsIndian)" />
+                    <InputText @bind-Value="fullStudent.Student.IsIndian" placeholder="Is Indian" class="form-control " />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="IsOutOfSchool">Is Out Of School</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.IsOutOfSchool)" />
+                    <InputText @bind-Value="fullStudent.Student.IsOutOfSchool" placeholder="Is Out Of School" class="form-control " />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="HasDisabilityCertificate">Has Disability Certificate</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.HasDisabilityCertificate)" />
+                    <InputText @bind-Value="fullStudent.Student.HasDisabilityCertificate" placeholder="Has Disability Certificate" class="form-control " />
+                </div>
+
+                <div class="col-md-3">
+                    <label for="DisabilityPercentage">Disability Percentage</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.DisabilityPercentage)" />
+                    <InputNumber @bind-Value="fullStudent.Student.DisabilityPercentage" class="form-control " />
+                </div>
+            </div>
+
+
+
+
         </div>
 
-        @if (currentStep == 1)
-        {
-        <h4>Step 1: Student Details</h4>
-        <div class="form-group">
-                <label for="step1-focus">fullStudent RollNumber</label>
-            <ValidationMessage For="@(() => fullStudent.Student.RollNumber)" />
-                <InputText id="step1-focus" @bind-Value="fullStudent.Student.RollNumber" placeholder="Roll Number" class="form-control" />
-                <!-- Example for Step 1 -->
+
+        <div class="card p-4 mb-4 shadow-sm rounded-2xl">
+            <h4 class="mb-4">Profile Details</h4>
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label for="StudentName">Student Name</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Profile.StudentName)" />
+                    <InputText id="StudentName" @bind-Value="fullStudent.Student.Profile.StudentName" placeholder="Enter Student Name" class="form-control " />
+                </div>
+                <div class="col-md-3">
+                    <label for="FacilitiesProvided">Facilities Provided</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Profile.FacilitiesProvided)" />
+                    <InputText @bind-Value="fullStudent.Student.Profile.FacilitiesProvided" placeholder="Enter Facilities Provided" class="form-control " />
+                </div>
+                <div class="col-md-3">
+                    <label for="IsCWSN">Is CWSN</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Profile.IsCWSN)" />
+                    <InputText @bind-Value="fullStudent.Student.Profile.IsCWSN" placeholder="Enter CWSN Status" class="form-control " />
+                </div>
+                <div class="col-md-3">
+                    <label for="IsSLD">Is SLD</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Profile.IsSLD)" />
+                    <InputText @bind-Value="fullStudent.Student.Profile.IsSLD" placeholder="Enter SLD Status" class="form-control " />
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label for="SLDType">SLD Type</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Profile.SLDType)" />
+                    <InputText @bind-Value="fullStudent.Student.Profile.SLDType" placeholder="Enter SLD Type" class="form-control " />
+                </div>
+                <div class="col-md-3">
+                    <label for="IsASD">Is ASD</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Profile.IsASD)" />
+                    <InputText @bind-Value="fullStudent.Student.Profile.IsASD" placeholder="Enter ASD Status" class="form-control " />
+                </div>
+                <div class="col-md-3">
+                    <label for="IsADHD">Is ADHD</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Profile.IsADHD)" />
+                    <InputText @bind-Value="fullStudent.Student.Profile.IsADHD" placeholder="Enter ADHD Status" class="form-control " />
+                </div>
+                <div class="col-md-3">
+                    <label for="IsGifted">Is Gifted</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Profile.IsGifted)" />
+                    <InputText @bind-Value="fullStudent.Student.Profile.IsGifted" placeholder="Enter Gifted Status" class="form-control " />
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label for="IsInStateCompetition">In State Competition</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Profile.IsInStateCompetition)" />
+                    <InputText @bind-Value="fullStudent.Student.Profile.IsInStateCompetition" placeholder="Enter State Competition Status" class="form-control " />
+                </div>
+                <div class="col-md-3">
+                    <label for="IsInNCC_NSS">In NCC/NSS</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Profile.IsInNCC_NSS)" />
+                    <InputText @bind-Value="fullStudent.Student.Profile.IsInNCC_NSS" placeholder="Enter NCC/NSS Status" class="form-control " />
+                </div>
+                <div class="col-md-3">
+                    <label for="IsInUseInternet">Uses Internet</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Profile.IsInUseInternet)" />
+                    <InputText @bind-Value="fullStudent.Student.Profile.IsInUseInternet" placeholder="Enter Internet Usage Status" class="form-control " />
+                </div>
+                <div class="col-md-3">
+                    <label for="Height">Height</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Profile.Height)" />
+                    <InputText @bind-Value="fullStudent.Student.Profile.Height" placeholder="Enter Height" class="form-control " />
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label for="Weight">Weight</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Profile.Weight)" />
+                    <InputText @bind-Value="fullStudent.Student.Profile.Weight" placeholder="Enter Weight" class="form-control " />
+                </div>
+                <div class="col-md-3">
+                    <label for="Residencetoschool">Residence to School Distance</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Profile.Residencetoschool)" />
+                    <InputText @bind-Value="fullStudent.Student.Profile.Residencetoschool" placeholder="Enter Residence to School Distance" class="form-control " />
+                </div>
+                <div class="col-md-3">
+                    <label for="Educationinfamily">Education in Family</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Profile.Educationinfamily)" />
+                    <InputText @bind-Value="fullStudent.Student.Profile.Educationinfamily" placeholder="Enter Education in Family Status" class="form-control " />
+                </div>
+                <!-- Add more fields here if needed to complete the row -->
+            </div>
 
         </div>
 
-        <div class="form-group">
-            <label for="StudentName">Student Name</label>
-            <ValidationMessage For="@(() => fullStudent.Student.Name)" />
-            <InputText @bind-Value="fullStudent.Student.Name" placeholder="Name" class="form-control"   />
-        </div>
-        <div class="form-group">
-            <label for="MobileNumber">MobileNumber</label>
-            <ValidationMessage For="@(() => fullStudent.Student.MobileNumber)" />
-            <InputText @bind-Value="fullStudent.Student.MobileNumber" placeholder="Mobile Number" class="form-control" />
-        </div>
+        <div class="card p-4 mb-4 shadow-sm rounded-2xl">
+            <h4 class="mb-4">Enrollment Details</h4>
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label for="AdmissionNumber">Admission Number</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Enrollment.AdmissionNumber)" />
+                    <InputNumber id="AdmissionNumber" class="form-control " @bind-Value="fullStudent.Student.Enrollment.AdmissionNumber" placeholder="Admission Number" />
+                </div>
+                <div class="col-md-3">
+                    <label for="AdmissionDate">Admission Date</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Enrollment.AdmissionDate)" />
+                    <InputDate class="form-control " id="AdmissionDate" @bind-Value="fullStudent.Student.Enrollment.AdmissionDate" placeholder="Select Admission Date" />
+                </div>
+                <div class="col-md-3">
+                    <label for="ClassRollNo">Class Roll Number</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Enrollment.ClassRollNo)" />
+                    <InputNumber class="form-control " id="ClassRollNo" @bind-Value="fullStudent.Student.Enrollment.ClassRollNo" placeholder="Class Roll Number" />
+                </div>
+                <div class="col-md-3">
+                    <label for="MediumOfInstruction">Medium Of Instruction</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Enrollment.MediumOfInstruction)" />
+                    <InputText class="form-control " id="MediumOfInstruction" @bind-Value="fullStudent.Student.Enrollment.MediumOfInstruction" placeholder="Medium Of Instruction" />
+                </div>
+            </div>
 
-        <div class="form-group">
-            <label for="AlternateMobileNumber">AlternateMobileNumber</label>
-            <ValidationMessage For="@(() => fullStudent.Student.AlternateMobileNumber)" />
-            <InputText @bind-Value="fullStudent.Student.AlternateMobileNumber" placeholder="Alternate Mobile" class="form-control" />
-        </div>
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label for="LanguagesGroupStudied">Languages Group Studied</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Enrollment.LanguagesGroupStudied)" />
+                    <InputText class="form-control " id="LanguagesGroupStudied" @bind-Value="fullStudent.Student.Enrollment.LanguagesGroupStudied" placeholder="Languages Group Studied" />
+                </div>
+                <div class="col-md-3">
+                    <label for="AcademicGroupStudied">Academic Group Studied</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Enrollment.AcademicGroupStudied)" />
+                    <InputText class="form-control " id="AcademicGroupStudied" @bind-Value="fullStudent.Student.Enrollment.AcademicGroupStudied" placeholder="Academic Group Studied" />
+                </div>
+                <div class="col-md-3">
+                    <label for="SubjectsGroupStudied">Subjects Group Studied</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Enrollment.SubjectsGroupStudied)" />
+                    <InputText class="form-control" id="SubjectsGroupStudied" @bind-Value="fullStudent.Student.Enrollment.SubjectsGroupStudied" placeholder="Subjects Group Studied" />
+                </div>
+                <div class="col-md-3">
+                    <label for="PreviousAcademicYear">Previous Academic Year</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Enrollment.PreviousAcademicYear)" />
+                    <InputText class="form-control " id="PreviousAcademicYear" @bind-Value="fullStudent.Student.Enrollment.PreviousAcademicYear" placeholder="Previous Academic Year" />
+                </div>
+            </div>
 
-        <div class="form-group">
-            <label for="Email">Email</label>
-            <ValidationMessage For="@(() => fullStudent.Student.Email)" />
-            <InputText @bind-Value="fullStudent.Student.Email" placeholder="Email" class="form-control" />
-        </div>
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label for="StatusPreviousYear">Status Previous Year</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Enrollment.StatusPreviousYear)" />
+                    <InputText class="form-control " id="StatusPreviousYear" @bind-Value="fullStudent.Student.Enrollment.StatusPreviousYear" placeholder="Status Previous Year" />
+                </div>
+                <div class="col-md-3">
+                    <label for="Admitted">Admitted</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Enrollment.Admitted)" />
+                    <InputText class="form-control " id="Admitted" @bind-Value="fullStudent.Student.Enrollment.Admitted" placeholder="Admitted" />
+                </div>
+                <div class="col-md-3">
+                    <label for="PreviousClass">Previous Class</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Enrollment.PreviousClass)" />
+                    <InputText class="form-control " id="PreviousClass" @bind-Value="fullStudent.Student.Enrollment.PreviousClass" placeholder="Previous Class" />
+                </div>
+                <div class="col-md-3">
+                    <label for="Marks">Marks</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Enrollment.Marks)" />
+                    <InputText class="form-control " id="Marks" @bind-Value="fullStudent.Student.Enrollment.Marks" placeholder="Marks" />
+                </div>
+            </div>
 
-        <div class="form-group">
-            <label for="Gender">Gender</label>
-            <ValidationMessage For="@(() => fullStudent.Student.Gender)" />
-            <InputText @bind-Value="fullStudent.Student.Gender" placeholder="Gender" class="form-control" />
-        </div>
-
-
-        <div class="form-group">
-            <label for="DateOfBirth">DateOfBirth</label>
-            <ValidationMessage For="@(() => fullStudent.Student.DateOfBirth)" />
-            <InputDate @bind-Value="fullStudent.Student.DateOfBirth" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="PermanentEducationNumber">PermanentEducationNumber</label>
-            <ValidationMessage For="@(() => fullStudent.Student.PermanentEducationNumber)" />
-            <InputText @bind-Value="fullStudent.Student.PermanentEducationNumber" placeholder="PEN" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="MotherName">MotherName</label>
-            <ValidationMessage For="@(() => fullStudent.Student.MotherName)" />
-            <InputText @bind-Value="fullStudent.Student.MotherName" placeholder="Mother's Name" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="FatherName">FatherName</label>
-            <ValidationMessage For="@(() => fullStudent.Student.FatherName)" />
-            <InputText @bind-Value="fullStudent.Student.FatherName" placeholder="Father's Name" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="GuardianName">GuardianName</label>
-            <ValidationMessage For="@(() => fullStudent.Student.GuardianName)" />
-            <InputText @bind-Value="fullStudent.Student.GuardianName" placeholder="Guardian's Name" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="AadharNumber">AadharNumber</label>
-            <ValidationMessage For="@(() => fullStudent.Student.AadharNumber)" />
-            <InputText @bind-Value="fullStudent.Student.AadharNumber" placeholder="Aadhar Number" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="NameOnAadhar">NameOnAadhar</label>
-            <ValidationMessage For="@(() => fullStudent.Student.NameOnAadhar)" />
-            <InputText @bind-Value="fullStudent.Student.NameOnAadhar" placeholder="Name on Aadhar" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="Address">Address</label>
-            <ValidationMessage For="@(() => fullStudent.Student.Address)" />
-            <InputText @bind-Value="fullStudent.Student.Address" placeholder="Address" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="Pincode">Pincode</label>
-            <ValidationMessage For="@(() => fullStudent.Student.Pincode)" />
-            <InputText @bind-Value="fullStudent.Student.Pincode" placeholder="Pincode" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="MotherTongue">MotherTongue</label>
-            <ValidationMessage For="@(() => fullStudent.Student.MotherTongue)" />
-            <InputText @bind-Value="fullStudent.Student.MotherTongue" placeholder="Mother Tongue" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="MinorityGroup">MinorityGroup</label>
-            <ValidationMessage For="@(() => fullStudent.Student.MinorityGroup)" />
-            <InputText @bind-Value="fullStudent.Student.MinorityGroup" placeholder="Minority Group" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="IsBPLBeneficiary">IsBPLBeneficiary</label>
-            <ValidationMessage For="@(() => fullStudent.Student.IsBPLBeneficiary)" />
-            <InputText @bind-Value="fullStudent.Student.IsBPLBeneficiary" placeholder="Is BPL Beneficiary" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="IsAAYBeneficiary">IsAAYBeneficiary</label>
-            <ValidationMessage For="@(() => fullStudent.Student.IsAAYBeneficiary)" />
-            <InputText @bind-Value="fullStudent.Student.IsAAYBeneficiary" placeholder="Is AAY Beneficiary" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="IsEWS">IsEWS</label>
-            <ValidationMessage For="@(() => fullStudent.Student.IsEWS)" />
-            <InputText @bind-Value="fullStudent.Student.IsEWS" placeholder="Is EWS" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="IsCWSN">IsCWSN</label>
-            <ValidationMessage For="@(() => fullStudent.Student.IsCWSN)" />
-            <InputText @bind-Value="fullStudent.Student.IsCWSN" placeholder="Is CWSN" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="TypeOfImpairment">TypeOfImpairment</label>
-            <ValidationMessage For="@(() => fullStudent.Student.TypeOfImpairment)" />
-            <InputText @bind-Value="fullStudent.Student.TypeOfImpairment" placeholder="Type of Impairment" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="IsIndian">IsIndian</label>
-            <ValidationMessage For="@(() => fullStudent.Student.IsIndian)" />
-            <InputText @bind-Value="fullStudent.Student.IsIndian" placeholder="Is Indian" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="IsOutOfSchool">IsOutOfSchool</label>
-            <ValidationMessage For="@(() => fullStudent.Student.IsOutOfSchool)" />
-            <InputText @bind-Value="fullStudent.Student.IsOutOfSchool" placeholder="Is Out Of School" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="HasDisabilityCertificate">HasDisabilityCertificate</label>
-            <ValidationMessage For="@(() => fullStudent.Student.HasDisabilityCertificate)" />
-            <InputText @bind-Value="fullStudent.Student.HasDisabilityCertificate" placeholder="Has Disability Certificate" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="DisabilityPercentage">DisabilityPercentage</label>
-            <ValidationMessage For="@(() => fullStudent.Student.DisabilityPercentage)" />
-            <InputNumber @bind-Value="fullStudent.Student.DisabilityPercentage" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="BloodGroup">BloodGroup</label>
-            <ValidationMessage For="@(() => fullStudent.Student.BloodGroup)" />
-            <InputText @bind-Value="fullStudent.Student.BloodGroup" placeholder="Blood Group" class="form-control" />
-        </div>
-            <button class="btn btn-primary ms-2" @onclick="GoToNextStep">Next</button>
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label for="PreviousAttendance">Previous Attendance</label>
+                    <ValidationMessage For="@(() => fullStudent.Student.Enrollment.PreviousAttendance)" />
+                    <InputText class="form-control " id="PreviousAttendance" @bind-Value="fullStudent.Student.Enrollment.PreviousAttendance" placeholder="Previous Attendance" />
+                </div>
+            </div>
             
-    }
-
-
-        @if (currentStep == 2)
-        {
-        <h4>Step 2: Profile Details</h4>
-        <div class="form-group">
-                <label for="step2-focus">Student Name</label>
-                <InputText id="step2-focus" @bind-Value="fullStudent.Student.Profile.StudentName" class="form-control" />
         </div>
-
-        <div class="form-group">
-            <label for="FacilitiesProvided">Facilities Provided</label>
-            <InputText @bind-Value="fullStudent.Student.Profile.FacilitiesProvided" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="IsCWSN">Is CWSN</label>
-            <InputText @bind-Value="fullStudent.Student.Profile.IsCWSN" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="IsSLD">Is SLD</label>
-            <InputText @bind-Value="fullStudent.Student.Profile.IsSLD" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="SLDType">SLD Type</label>
-            <InputText @bind-Value="fullStudent.Student.Profile.SLDType" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="IsASD">Is ASD</label>
-            <InputText @bind-Value="fullStudent.Student.Profile.IsASD" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="IsADHD">Is ADHD</label>
-            <InputText @bind-Value="fullStudent.Student.Profile.IsADHD" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for=" IsGifted">Is Gifted</label>
-            <InputText @bind-Value="fullStudent.Student.Profile.IsGifted" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for=" IsInStateCompetition">In State Competition</label>
-            <InputText @bind-Value="fullStudent.Student.Profile.IsInStateCompetition" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="IsInNCC_NSS">In NCC/NSS</label>
-            <InputText @bind-Value="fullStudent.Student.Profile.IsInNCC_NSS" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for=" IsInUseInternet">Uses Internet</label>
-            <InputText @bind-Value="fullStudent.Student.Profile.IsInUseInternet" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="Height">Height</label>
-            <InputText @bind-Value="fullStudent.Student.Profile.Height" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for=" Weight">Weight</label>
-            <InputText @bind-Value="fullStudent.Student.Profile.Weight" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for=" Residencetoschool">Residence to School Distance</label>
-            <InputText @bind-Value="fullStudent.Student.Profile.Residencetoschool" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for=" Educationinfamily">Education in Family</label>
-            <InputText @bind-Value="fullStudent.Student.Profile.Educationinfamily" class="form-control" />
-        </div>
-            <button class="btn btn-primary ms-2" @onclick="GoToPreviousStep">Previous</button>
-            <button class="btn btn-primary ms-2" @onclick="GoToNextStep">Next</button>
-            <button class="btn btn-primary ms-2" @onclick="GoToFirstStep">Go to Step 1</button>
-            
-    }
-        @if (currentStep == 3)
-        {
-        <h4>Step 3: Enrollment Details</h4>
-
-        <div class="form-group">
-                <label for="step3-focus">Admission Number</label>
-                <InputNumber id="step3-focus" class="form-control" @bind-Value="fullStudent.Student.Enrollment.AdmissionNumber" placeholder="Admission Number" />
-        </div>
-
-        <div class="form-group">
-            <label for="AdmissionDate">Admission Date</label>
-            <InputDate class="form-control" id="AdmissionDate" @bind-Value="fullStudent.Student.Enrollment.AdmissionDate" />
-        </div>
-
-        <div class="form-group">
-            <label for="ClassRollNo">Class Roll Number</label>
-            <InputNumber class="form-control" id="ClassRollNo" @bind-Value="fullStudent.Student.Enrollment.ClassRollNo" placeholder="Class Roll Number" />
-        </div>
-
-        <div class="form-group">
-            <label for="MediumOfInstruction">Medium Of Instruction</label>
-            <InputText class="form-control" id="MediumOfInstruction" @bind-Value="fullStudent.Student.Enrollment.MediumOfInstruction" placeholder="Medium Of Instruction" />
-        </div>
-
-        <div class="form-group">
-            <label for="LanguagesGroupStudied">Languages Group Studied</label>
-            <InputText class="form-control" id="LanguagesGroupStudied" @bind-Value="fullStudent.Student.Enrollment.LanguagesGroupStudied" placeholder="Languages Group Studied" />
-        </div>
-
-        <div class="form-group">
-            <label for="AcademicGroupStudied">Academic Group Studied</label>
-            <InputText class="form-control" id="AcademicGroupStudied" @bind-Value="fullStudent.Student.Enrollment.AcademicGroupStudied" placeholder="Academic Group Studied" />
-        </div>
-
-        <div class="form-group">
-            <label for="SubjectsGroupStudied">Subjects Group Studied</label>
-            <InputText class="form-control" id="SubjectsGroupStudied" @bind-Value="fullStudent.Student.Enrollment.SubjectsGroupStudied" placeholder="Subjects Group Studied" />
-        </div>
-
-        <div class="form-group">
-            <label for="PreviousAcademicYear">Previous Academic Year</label>
-            <InputText class="form-control" id="PreviousAcademicYear" @bind-Value="fullStudent.Student.Enrollment.PreviousAcademicYear" placeholder="Previous Academic Year" />
-        </div>
-
-        <div class="form-group">
-            <label for="StatusPreviousYear">Status Previous Year</label>
-            <InputText class="form-control" id="StatusPreviousYear" @bind-Value="fullStudent.Student.Enrollment.StatusPreviousYear" placeholder="Status Previous Year" />
-        </div>
-
-        <div class="form-group">
-            <label for="Admitted">Admitted</label>
-            <InputText class="form-control" id="Admitted" @bind-Value="fullStudent.Student.Enrollment.Admitted" placeholder="Admitted" />
-        </div>
-
-        <div class="form-group">
-            <label for="PreviousClass">Previous Class</label>
-            <InputText class="form-control" id="PreviousClass" @bind-Value="fullStudent.Student.Enrollment.PreviousClass" placeholder="Previous Class" />
-        </div>
-
-        <div class="form-group">
-            <label for="Marks">Marks</label>
-            <InputText class="form-control" id="Marks" @bind-Value="fullStudent.Student.Enrollment.Marks" placeholder="Marks" />
-        </div>
-
-        <div class="form-group">
-            <label for="PreviousAttendance">Previous Attendance</label>
-            <InputText class="form-control" id="PreviousAttendance" @bind-Value="fullStudent.Student.Enrollment.PreviousAttendance" placeholder="Previous Attendance" />
-        </div>
-            
-            <button class="btn btn-primary ms-2" @onclick="GoToPreviousStep">Previous</button>
-            <button class="btn btn-primary ms-2" @onclick="GoToFirstStep">Go to Step 1</button>
-    }
-
-                            <div class="card-footer d-flex justify-content-between">
-                                <button type="button" class="btn btn-outline-secondary" @onclick="GoToPreviousStep" disabled="@(currentStep == 1)">
-                                    ← Back
-                                </button>
-
-                                @if (currentStep < 3)
-                                {
-                                    <button type="button" class="btn btn-primary" @onclick="GoToNextStep">
-                                        Next →
-                                    </button>
-                                }
-                                else
-                                {
-                                    <button type="submit" class="btn btn-primary mt-4">Add Student</button>
-                                }
-                            </div>
-    
-
+        <button type="submit" class="btn btn-primary mt-4">Add Student</button>
     </div>
-    </div>
+
+
 </EditForm>
-          </div>
-        </div>
-    </div>
-</div>
-@if (successMessage != null)
+
+
+
+@if (!string.IsNullOrEmpty(successMessage))
 {
-    <p class="text-green-600 mt-2">@successMessage</p>
+    <div class="alert alert-success mt-3">
+        @successMessage
+    </div>
 }
 
-@inject IJSRuntime JS
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger mt-3">
+        @errorMessage
+    </div>
+}
+
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Components.Forms
 
 @code {
-   
-    
     private FullStudentInfo fullStudent = new FullStudentInfo
+    {
+        Student = new Student
         {
-            Student = new Student
-            {
-                Profile = new StudentProfile(),
-                Enrollment = new EnrollmentDetail()
-            }
-        };
-
-
-    private int currentStep = 1;
-
-    private async Task GoToFirstStep()
-    {
-        currentStep = 1;
-        await SetFocusForStep();
-    }
-
-    @inject IJSRuntime JS
-
-    private async Task GoToNextStep()
-    {
-        if (currentStep < 3) currentStep++;
-        // Trigger focus on the first field of the next step
-        await SetFocusForStep();
-    }
-
-    private async Task GoToPreviousStep()
-    {
-        if (currentStep > 1) currentStep--;
-        // Trigger focus on the first field of the previous step
-        await SetFocusForStep();
-    }
-
-    private async Task SetFocusForStep()
-    {
-        string focusElementId = currentStep switch
-        {
-            1 => "step1-focus", // Step 1 focus element
-            2 => "step2-focus", // Step 2 focus element
-            3 => "step3-focus", // Step 3 focus element
-            _ => ""
-        };
-
-        if (!string.IsNullOrEmpty(focusElementId))
-        {
-            await JS.InvokeVoidAsync("focusElement", focusElementId);
+            Profile = new StudentProfile(),
+            Enrollment = new EnrollmentDetail()
         }
-    }
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await SetFocusForStep();
-        }
-    }
+    };
 
-
+    private string? errorMessage;
     private string? successMessage;
 
+    private EditContext studentEditContext;
+    private EditContext profileEditContext;
+    private EditContext enrollmentEditContext;
+
+    protected override void OnInitialized()
+    {
+        studentEditContext = new EditContext(fullStudent.Student);
+        profileEditContext = new EditContext(fullStudent.Student.Profile);
+        enrollmentEditContext = new EditContext(fullStudent.Student.Enrollment);
+    }
 
     private async Task HandleValidSubmit()
     {
-        var response = await Http.PostAsJsonAsync("api/students/full/add", fullStudent);
-        if (response.IsSuccessStatusCode)
+        // Validate all the objects manually
+        var isValid = ValidateObject(fullStudent.Student) &&
+                      ValidateObject(fullStudent.Student.Profile) &&
+                      ValidateObject(fullStudent.Student.Enrollment);
+
+        if (isValid) // Proceed if all validations pass
         {
-            fullStudent = new FullStudentInfo
+            var response = await Http.PostAsJsonAsync("api/students/full/add", fullStudent);
+            if (response.IsSuccessStatusCode)
+            {
+                // Reset the student object
+                fullStudent = new FullStudentInfo
                 {
                     Student = new Student
                     {
@@ -456,60 +464,28 @@
                         Enrollment = new EnrollmentDetail()
                     }
                 };
-            successMessage = "Student added successfully!";
-            
-           
-            Navigation.NavigateTo("/students-list");
+
+                successMessage = "Student added successfully!";
+                Navigation.NavigateTo("/students-list");
+            }
+            else
+            {
+                errorMessage = await response.Content.ReadAsStringAsync();
+                successMessage = "Error occurred while adding student.";
+            }
         }
         else
         {
-            var errorMessage = await response.Content.ReadAsStringAsync();
-            successMessage = "Error occurred while adding student.";
+            errorMessage = "Please fill in all required fields.";
         }
     }
 
+    private bool ValidateObject(object model)
+    {
+        var context = new ValidationContext(model);
+        var results = new List<ValidationResult>();
+        return Validator.TryValidateObject(model, context, results, true);
+    }
 }
-<script>
-    window.focusElement = (elementId) => {
-        const element = document.getElementById(elementId);
-        if (element) {
-            element.focus();
-        }
-    }
-</script>
 
-<style>
-    /* Base styles for the progress bar */
-    .progress-bar {
-        width: 100%;
-        height: 20px;
-        background-color: #e0e0e0;
-        border-radius: 5px;
-    }
 
-    /* Default style for progress inside the bar */
-    .progress {
-        height: 100%;
-        background-color: #4caf50; /* Initial color, green */
-        border-radius: 5px;
-        transition: width 0.3s ease-in-out;
-    }
-
-    /* Optional: Customize colors based on different steps */
-    .step1 .progress {
-        background-color: #4caf50; /* Green */
-    }
-
-    .step2 .progress {
-        background-color: #2196F3; /* Blue */
-    }
-
-    .step3 .progress {
-        background-color: #FF9800; /* Orange */
-    }
-
-    /* Add a slight color change when completed */
-    .completed {
-        background-color: #8BC34A; /* Lighter green when completed */
-    }
-</style>

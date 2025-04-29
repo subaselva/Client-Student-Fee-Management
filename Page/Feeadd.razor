@@ -11,6 +11,7 @@
 
     <div class="form-group">
         <label for="StudentName">Student Name</label>
+        <ValidationMessage For="@(() => studentFee.StudentName)" />
         <InputText id="StudentName" class="form-control" @bind-Value="studentFee.StudentName" />
     </div>
 
@@ -23,6 +24,7 @@
     <!-- Class Selection Dropdown -->
     <div class="form-group">
         <label for="IsClassStudent">ClassSection</label>
+        <ValidationMessage For="@(() => studentFee.ClassSection)" />
         <InputText id="ClassSection" class="form-control" @bind-Value="studentFee.ClassSection" />
 
 
@@ -142,6 +144,7 @@
 
     <div class="form-group">
         <label for="WhatsAppNumber">WhatsApp Number</label>
+         <ValidationMessage For="@(() => studentFee.WhatsAppNumber)" />
         <InputText id="WhatsAppNumber" class="form-control" @bind-Value="studentFee.WhatsAppNumber" />
     </div>
 

@@ -12,8 +12,10 @@
 <h3 class="title">🎓 Student Fee Management</h3>
 
 <div class="d-flex justify-content-between mb-3">
-    <a class="accordion-header" href="/feeadd"> Add Student Fee</a>
-    <input @bind="searchQuery" @bind:event="oninput" class="form-control w-25" placeholder="🔍 Search by Name or Reg No..." />
+    <a href="/fees" class="btn btn-primary d-flex align-items-center gap-2">
+        <i class="bi bi-plus-circle"></i> Add Student
+    </a>
+    <input @bind="SearchQuery" @bind:event="oninput" class="form-control w-25" placeholder="🔍 Search by Name or Reg No..." />
 </div>
 
 <table class="table table-custom table-hover table-bordered">
@@ -54,27 +56,23 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var fee in studentFees.Where(f =>
-        string.IsNullOrWhiteSpace(searchQuery) ||
-        f.StudentName.ToLower().Contains(searchQuery.ToLower()) ||
-        f.RegistrationNumber.ToString().Contains(searchQuery))
-        .ToList())
+        @foreach (var fee in PaginatedStudentFees)
         {
-            <tr class="@(IsFeeZero(fee) ? "table-danger" : HasDueAmount(fee) ? "table-warning" : "")">
+            <tr>
                 <td>@fee.RegistrationNumber</td>
 
                 <!-- Student Name Highlight -->
-                <td class="@(IsFeeZero(fee) ? "table-danger fw-bold" : HasDueAmount(fee) ? "table-warning " : "")">
+                <td >
                     @fee.StudentName
                 </td>
 
                 <td>@fee.IsNewStudent</td>
                 <td>@fee.ClassSection</td>
                 <td>@fee.AdmissionFee</td>
-
-                <td class="@(IsFeeZero(fee) ? "table-danger" : HasDueAmount(fee) ? "table-warning" : "")">
+                <td class="@(fee.AdmissionAmountPaid == 0 ? "table-danger" : fee.AdmissionAmountPaid == null ? "" : "table-warning")">
                     @(fee.AdmissionAmountPaid?.ToString() ?? "N/A")
                 </td>
+
 
 
                 <td>@fee.AdmissionDue</td>
@@ -84,18 +82,16 @@
                 <td>@fee.FirstTermFee</td>
 
 
-                <td class="@(IsFeeZero(fee) ? "table-danger" : HasDueAmount(fee) ? "table-warning" : "")">
+                <td class="@(fee.FirstTermAmountPaid == 0 ? "table-danger" : fee.FirstTermAmountPaid == null ? "" : "table-warning")">
                     @(fee.FirstTermAmountPaid?.ToString() ?? "N/A")
                 </td>
-
 
                 <td>@fee.FirstTermDue</td>
                 <td>@fee.FirstTermBillNo</td>
                 <td>@(fee.FirstTermDate?.ToShortDateString() ?? "N/A")</td>
                 <td>@fee.SecondTermFee</td>
 
-                <!-- Highlight Second Term Amount Paid if 0 -->
-                <td class="@(IsFeeZero(fee) ? "table-danger" : HasDueAmount(fee) ? "table-warning" : "")">
+                <td class="@(fee.SecondTermAmountPaid == 0 ? "table-danger" :fee.SecondTermAmountPaid == null ? "" : "table-warning")">
                     @(fee.SecondTermAmountPaid?.ToString() ?? "N/A")
                 </td>
 
@@ -105,8 +101,7 @@
                 <td>@(fee.SecondTermDate?.ToShortDateString() ?? "N/A")</td>
                 <td>@fee.AnnualFees</td>
 
-                <!-- Highlight Dues if any fee is 0 -->
-                <td class="@(IsFeeZero(fee) ? "table-danger" : HasDueAmount(fee) ? "table-warning" : "")">
+                <td >
                     @fee.Dues
                 </td>
 
@@ -178,11 +173,78 @@
 
 </table>
 
+<div class="mt-3 d-flex justify-content-center gap-2">
+    <!-- Prev -->
+    <button class="btn btn-outline-secondary"
+            @onclick="() => GoToPage(CurrentPage - 1)"
+            disabled="@(CurrentPage == 1)">
+        ⬅ Prev
+    </button>
+
+    <!-- Page numbers - CLICKABLE -->
+    @for (int p = 1; p <= TotalPages; p++)
+    {
+        var pageNumber = p; // 👈 capture the current loop value
+
+        <button class="btn @(pageNumber == CurrentPage ? "btn-primary fw-bold" : "btn-outline-primary")"
+                @onclick="() => GoToPage(pageNumber)">
+            @pageNumber
+        </button>
+    }
+
+
+    <!-- Next -->
+    <button class="btn btn-outline-secondary"
+            @onclick="() => GoToPage(CurrentPage + 1)"
+            disabled="@(CurrentPage == TotalPages)">
+        Next ➡
+    </button>
+</div>
+@inject HttpClient Http
+
+
 @code {
 
     private List<StudentFee> studentFees = new();
     private FeeSummary feeSummary = new();
-    private string searchQuery = "";
+    private string _searchQuery = "";
+
+    private int CurrentPage = 1;
+    private int PageSize = 10;
+
+    private string SearchQuery
+    {
+        get => _searchQuery;
+        set
+        {
+            _searchQuery = value;
+            CurrentPage = 1; // Reset to page 1 on search
+        }
+    }
+
+    // 🔸 Filtered and Paginated Data
+    private List<StudentFee> FilteredStudents => studentFees
+        .Where(f =>
+            string.IsNullOrWhiteSpace(SearchQuery) ||
+            f.StudentName.ToLower().Contains(SearchQuery.ToLower()) ||
+            f.RegistrationNumber.ToString().Contains(SearchQuery))
+        .ToList();
+
+    private int TotalPages => (int)Math.Ceiling((double)FilteredStudents.Count / PageSize);
+
+    private List<StudentFee> PaginatedStudentFees => FilteredStudents
+        .Skip((CurrentPage - 1) * PageSize)
+        .Take(PageSize)
+        .ToList();
+
+    private void GoToPage(int page)
+    {
+        if (page >= 1 && page <= TotalPages)
+        {
+            CurrentPage = page;
+        }
+    }
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -200,23 +262,36 @@
         }
     }
 
-    private bool HasDueAmount(StudentFee fee)
-    {
-        return fee.AdmissionDue > 0 ||
-               fee.FirstTermDue > 0 ||
-               fee.SecondTermDue > 0 ;
-               
-    }
+    
+
     private bool IsFeeZero(StudentFee fee)
     {
-
-        return (fee.AdmissionAmountPaid == 0 || fee.AdmissionAmountPaid == null) ||
-
-               (fee.FirstTermAmountPaid == 0 || fee.FirstTermAmountPaid == null) ||
-
-               (fee.SecondTermAmountPaid == 0 || fee.SecondTermAmountPaid == null);
-
+        return fee.AdmissionAmountPaid.GetValueOrDefault() == 0 ||
+               fee.FirstTermAmountPaid.GetValueOrDefault() == 0 ||
+               fee.SecondTermAmountPaid.GetValueOrDefault() == 0;
     }
 
+    // Highlight yellow if ALL are greater than 0
+    private bool IsAllPaid(StudentFee fee)
+    {
+        return fee.AdmissionAmountPaid.GetValueOrDefault() > 0 &&
+               fee.FirstTermAmountPaid.GetValueOrDefault() > 0 &&
+               fee.SecondTermAmountPaid.GetValueOrDefault() > 0;
+    }
+
+    private async Task DownloadExcel()
+    {
+        var response = await Http.GetAsync("api/students/export/excel");
+
+        if (response.IsSuccessStatusCode)
+        {
+            var bytes = await response.Content.ReadAsByteArrayAsync();
+            await JSRuntime.InvokeVoidAsync("downloadFile", "Students.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", bytes);
+        }
+        else
+        {
+            Console.WriteLine("Excel export failed.");
+        }
+    }
 
 }

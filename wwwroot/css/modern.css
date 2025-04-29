@@ -189,13 +189,4 @@
         background-color: #d1ecf1 !important; /* Light blue */
     }
 
-/* Ensure all table cells have the same styling */
-/* Alternate row colors */
-tr:nth-child(odd) {
-    background-color: #f9f9f9; /* Light white */
-}
-
-tr:nth-child(even) {
-    background-color: #ffffff; /* Pure white */
-}
 

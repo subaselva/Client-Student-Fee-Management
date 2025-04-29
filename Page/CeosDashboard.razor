@@ -1,7 +1,7 @@
 ﻿@page "/ceo-dashboard"
 @inject SignalRService SignalRService
 @inject HttpClient Http
-
+@using BlazorApp1.Model
 <PageTitle>CEO Dashboard</PageTitle>
 
 <h3 class="title">Pending Fee Edit Requests</h3>
@@ -71,15 +71,57 @@ else
         @notificationMessage
     </div>
 }
+<h3 class="title mt-5">Pending Delete Requests</h3>
+
+@if (deleteRequests.Count > 0)
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Registration Number</th>
+                <th>Student Name</th>
+                <th>Requested By</th>
+                <th>Requested At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var request in deleteRequests)
+            {
+                <tr>
+                    <td>@request.StudentFeeId</td>
+                    <td>@request.StudentName</td>
+                    <td>@request.RequestedBy</td>
+                    <td>@request.RequestedAt.ToLocalTime().ToString("g")</td>
+                    <td>
+                        <button class="btn btn-success" @onclick="() => ApproveDelete(request.Id)">Approve</button>
+                        <button class="btn btn-danger" @onclick="() => RejectDelete(request.Id)">Reject</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="alert alert-info">No pending delete requests.</p>
+}
 
 @code {
     private List<StudentFeeEditRequest> pendingRequests = new();
     private Dictionary<int, StudentFee> originalDataMap = new(); // Store original data per student
     private string notificationMessage = string.Empty;
+    private List<DeleteRequestDto> deleteRequests = new();
 
+    private async Task FetchDeleteRequests()
+    {
+        deleteRequests = await Http.GetFromJsonAsync<List<DeleteRequestDto>>("api/StudentFees/DeleteRequests") ?? new();
+    }
     protected override async Task OnInitializedAsync()
     {
         await FetchPendingRequests();
+        await FetchPendingRequests();
+        await FetchDeleteRequests();
     }
 
     private async Task FetchPendingRequests()
@@ -136,5 +178,35 @@ else
             notificationMessage = "Error rejecting request.";
         }
     }
+
+    
+    private async Task ApproveDelete(int id)
+    {
+        var response = await Http.DeleteAsync($"api/StudentFees/ApproveDelete/{id}");
+        if (response.IsSuccessStatusCode)
+        {
+            notificationMessage = "Delete request approved.";
+            await FetchDeleteRequests();
+        }
+        else
+        {
+            notificationMessage = "Error approving delete request.";
+        }
+    }
+
+    private async Task RejectDelete(int id)
+    {
+        var response = await Http.DeleteAsync($"api/StudentFees/RejectDelete/{id}"); // This should be a real endpoint
+        if (response.IsSuccessStatusCode)
+        {
+            notificationMessage = "Delete request rejected.";
+            await FetchDeleteRequests();
+        }
+        else
+        {
+            notificationMessage = "Error rejecting delete request.";
+        }
+    }
+
 }
 

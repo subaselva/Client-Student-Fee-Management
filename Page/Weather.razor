@@ -63,8 +63,6 @@
         {
             <tr>
                 <td>@fee.RegistrationNumber</td>
-
-                <!-- Student Name Highlight -->
                 <td class="@(IsFeeZero(fee) ? "table-danger fw-bold" : IsAllPaid(fee) ? "table-warning" : "")">
                     @fee.StudentName
                 </td>
@@ -72,7 +70,7 @@
                 <td>@fee.IsNewStudent</td>
                 <td>@fee.ClassSection</td>
                 <td>@fee.AdmissionFee</td>
-                <td class="@(fee.AdmissionAmountPaid == 0 || fee.AdmissionAmountPaid == null ? "table-danger" : "table-warning")">
+                <td class="@(fee.AdmissionAmountPaid == 0 ? "table-danger" : fee.AdmissionAmountPaid == null ? "" : "table-warning")">
                     @(fee.AdmissionAmountPaid?.ToString() ?? "N/A")
                 </td>
 
@@ -85,7 +83,7 @@
                 <td>@fee.FirstTermFee</td>
 
 
-                <td class="@(fee.FirstTermAmountPaid == 0 || fee.FirstTermAmountPaid == null ? "table-danger" : "table-warning")">
+                <td class="@(fee.FirstTermAmountPaid == 0 ? "table-danger" : fee.FirstTermAmountPaid == null ? "" : "table-warning")">
                     @(fee.FirstTermAmountPaid?.ToString() ?? "N/A")
                 </td>
 
@@ -94,7 +92,7 @@
                 <td>@(fee.FirstTermDate?.ToShortDateString() ?? "N/A")</td>
                 <td>@fee.SecondTermFee</td>
 
-                <td class="@(fee.SecondTermAmountPaid == 0 || fee.SecondTermAmountPaid == null ? "table-danger" : "table-warning")">
+                <td class="@(fee.SecondTermAmountPaid == 0 ? "table-danger" :fee.SecondTermAmountPaid == null ? "" : "table-warning")">
                     @(fee.SecondTermAmountPaid?.ToString() ?? "N/A")
                 </td>
 
@@ -129,7 +127,8 @@
                 <td style="white-space:nowrap">
                     <div class="d-flex gap-2">
                         <button class="btn btn-primary btn-sm w-100" @onclick="() => EditFee(fee.RegistrationNumber)">✏️ Edit</button>
-                        <button class="btn btn-primary btn-sm w-100" @onclick="() => ConfirmDelete(fee.RegistrationNumber)">🗑 Delete</button>
+                        <button class="btn btn-primary btn-sm w-100" @onclick="() => ConfirmDelete(fee.RegistrationNumber, fee.StudentName)">🗑️ Delete</button>
+
                     </div>
                 </td>
             </tr>
@@ -275,15 +274,32 @@
         }
     }
 
-    private async Task ConfirmDelete(int registrationNumber)
+    private async Task ConfirmDelete(int registrationNumber, string studentName)
     {
-        bool confirmed = await JSRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to delete this record?");
+        bool confirmed = await JSRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to request deletion of this record?");
         if (confirmed)
         {
-            await StudentFeeService.DeleteStudentFeeAsync(registrationNumber);
-            studentFees.RemoveAll(f => f.RegistrationNumber == registrationNumber);
+            var request = new DeleteRequestDto
+                {
+                    StudentFeeId = registrationNumber,
+                    StudentName = studentName
+                };
+
+            var response = await Http.PostAsJsonAsync("api/StudentFees/DeleteRequest", request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                await JSRuntime.InvokeVoidAsync("alert", "Delete request submitted successfully.");
+                studentFees.RemoveAll(f => f.RegistrationNumber == registrationNumber);
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                await JSRuntime.InvokeVoidAsync("alert", $"Failed to submit delete request. Error: {error}");
+            }
         }
     }
+
     // Highlight red if ANY fee is 0 or null
     private bool IsFeeZero(StudentFee fee)
     {

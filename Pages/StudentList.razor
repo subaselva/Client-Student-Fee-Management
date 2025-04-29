@@ -11,7 +11,9 @@
         <i class="bi bi-plus-circle"></i> Add Student
     </a>
     <input @bind="SearchQuery" @bind:event="oninput" class="form-control w-25" placeholder="🔍 Search by Name or Reg No..." />
-   
+    <div class="d-flex gap-2">
+        <button class="btn btn-primary" @onclick="DownloadFullExcel">📄 Export Excel Student</button>
+    </div>
     <div class="d-flex gap-2">
         <button class="btn btn-primary" @onclick="DownloadExcel">📄 Export Excel</button>
     </div>
@@ -173,6 +175,21 @@
     private async Task DownloadExcel()
     {
         var response = await Http.GetAsync("api/students/export/excel");
+
+        if (response.IsSuccessStatusCode)
+        {
+            var bytes = await response.Content.ReadAsByteArrayAsync();
+            await JS.InvokeVoidAsync("downloadFile", "Students.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", bytes);
+        }
+        else
+        {
+            Console.WriteLine("Excel export failed.");
+        }
+    }
+
+    private async Task DownloadFullExcel()
+    {
+        var response = await Http.GetAsync("api/Export/export/excel");
 
         if (response.IsSuccessStatusCode)
         {

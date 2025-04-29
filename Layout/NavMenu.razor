@@ -18,24 +18,35 @@
                 <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
             </NavLink>
         </div>
+        <nav class="nav flex-column">
+            <!-- Dropdown Toggle -->
+            <div class="nav-item px-3">
+                <a class="nav-link" @onclick="ToggleDropdown" style="cursor: pointer;">
+                    <i class=" bi bi-plus-square-fill-nav-menu @($"bi {ChevronIcon} me-1")"></i> Student Management
+                </a>
+            </div>
+
+            <!-- Dropdown Content -->
+            <div class="@DropdownCssClass px-4" style="overflow-y: auto; transition: max-height 0.3s ease;">
+                
+                <NavLink class="nav-link text-white" href="/students-list">
+                    <i class="bi bi-list-ul me-1"></i> Student List
+                </NavLink>
+                <NavLink class="nav-link text-white" href="/student-enrollment-list">
+                    <i class="bi bi-plus-square-fill me-1" aria-hidden="true style="color: white;"></i> Enrollment List
+                </NavLink>
+                <NavLink class="nav-link text-white" href="/student-profile-list">
+                    <i class="bi bi-person-lines-fill me-1"></i> Profile List
+                </NavLink>
+                <NavLink class="nav-link text-white" href="/studentfull">
+                    <i class="bi bi-card-checklist me-1"></i> Full Details
+                </NavLink>
+            </div>
+        </nav>
+
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/students">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> StudentFeeDetails
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/students-list">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> StudentFeeDetails
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/student-profile-list">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> StudentFeeDetails
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/studentfull">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> StudentFeeDetails
+            <NavLink class="nav-link" href="/restore-database">
+                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Recovery
             </NavLink>
         </div>
         <AuthorizeView Roles="Accountant">
@@ -102,5 +113,19 @@
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    private bool isDropdownOpen = false;
+
+    // Class to control visibility of the sub-links
+    private string DropdownCssClass => isDropdownOpen ? "dropdown-open" : "d-none";
+
+    // Icon direction toggle
+    private string ChevronIcon => isDropdownOpen ? "bi-chevron-up" : "bi-chevron-down";
+
+    // Toggle method
+    private void ToggleDropdown()
+    {
+        isDropdownOpen = !isDropdownOpen;
     }
 }

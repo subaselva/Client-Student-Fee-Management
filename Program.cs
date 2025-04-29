@@ -21,6 +21,7 @@ if (builder.HostEnvironment.IsProduction())
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(apiBaseUrl) });
 
+
 builder.Services.AddScoped<StudentFeeService>();
 builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddAuthorizationCore();
