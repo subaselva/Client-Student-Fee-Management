@@ -20,78 +20,78 @@ else
             <h4 class="mb-4">Enrollment Details</h4>
             <div class="row g-3">
                 <div class="col-md-3">
-                    <label for="AdmissionNumber">Admission Number</label>
+                    <label for="AdmissionNumber">1. Admission Number</label>
                     <ValidationMessage For="@(() => enrollmentDetail.AdmissionNumber)" />
-                    <InputNumber id="AdmissionNumber" class="form-control " @bind-Value="enrollmentDetail.AdmissionNumber" placeholder="Admission Number" />
+                    <InputNumber id="AdmissionNumber" class="form-control " @bind-Value="enrollmentDetail.AdmissionNumber" placeholder="1) Admission Number" />
                 </div>
                 <div class="col-md-3">
-                    <label for="AdmissionDate">Admission Date</label>
+                    <label for="AdmissionDate">2. Admission Date</label>
                     <ValidationMessage For="@(() => enrollmentDetail.AdmissionDate)" />
-                    <InputDate class="form-control " id="AdmissionDate" @bind-Value="enrollmentDetail.AdmissionDate" placeholder="Select Admission Date" />
+                    <InputDate class="form-control " id="AdmissionDate" @bind-Value="enrollmentDetail.AdmissionDate" placeholder="2) Select Admission Date" />
                 </div>
                 <div class="col-md-3">
-                    <label for="ClassRollNo">Class Roll Number</label>
+                    <label for="ClassRollNo">3. Class Roll Number</label>
                     <ValidationMessage For="@(() => enrollmentDetail.ClassRollNo)" />
-                    <InputNumber class="form-control " id="ClassRollNo" @bind-Value="enrollmentDetail.ClassRollNo" placeholder="Class Roll Number" />
+                    <InputNumber class="form-control " id="ClassRollNo" @bind-Value="enrollmentDetail.ClassRollNo" placeholder="3) Class Roll Number" />
                 </div>
                 <div class="col-md-3">
-                    <label for="MediumOfInstruction">Medium Of Instruction</label>
+                    <label for="MediumOfInstruction">4. Medium Of Instruction</label>
                     <ValidationMessage For="@(() => enrollmentDetail.MediumOfInstruction)" />
-                    <InputText class="form-control " id="MediumOfInstruction" @bind-Value="enrollmentDetail.MediumOfInstruction" placeholder="Medium Of Instruction" />
+                    <InputText class="form-control " id="MediumOfInstruction" @bind-Value="enrollmentDetail.MediumOfInstruction" placeholder="4) Medium Of Instruction" />
                 </div>
             </div>
 
             <div class="row g-3">
                 <div class="col-md-3">
-                    <label for="LanguagesGroupStudied">Languages Group Studied</label>
+                    <label for="LanguagesGroupStudied">5. Languages Group Studied</label>
                     <ValidationMessage For="@(() => enrollmentDetail.LanguagesGroupStudied)" />
-                    <InputText class="form-control " id="LanguagesGroupStudied" @bind-Value="enrollmentDetail.LanguagesGroupStudied" placeholder="Languages Group Studied" />
+                    <InputText class="form-control " id="LanguagesGroupStudied" @bind-Value="enrollmentDetail.LanguagesGroupStudied" placeholder="5) Languages Group Studied" />
                 </div>
                 <div class="col-md-3">
-                    <label for="AcademicGroupStudied">Academic Group Studied</label>
+                    <label for="AcademicGroupStudied">6. Academic Group Studied</label>
                     <ValidationMessage For="@(() => enrollmentDetail.AcademicGroupStudied)" />
-                    <InputText class="form-control " id="AcademicGroupStudied" @bind-Value="enrollmentDetail.AcademicGroupStudied" placeholder="Academic Group Studied" />
+                    <InputText class="form-control " id="AcademicGroupStudied" @bind-Value="enrollmentDetail.AcademicGroupStudied" placeholder="6) Academic Group Studied" />
                 </div>
                 <div class="col-md-3">
-                    <label for="SubjectsGroupStudied">Subjects Group Studied</label>
+                    <label for="SubjectsGroupStudied">7. Subjects Group Studied</label>
                     <ValidationMessage For="@(() => enrollmentDetail.SubjectsGroupStudied)" />
-                    <InputText class="form-control" id="SubjectsGroupStudied" @bind-Value="enrollmentDetail.SubjectsGroupStudied" placeholder="Subjects Group Studied" />
+                    <InputText class="form-control" id="SubjectsGroupStudied" @bind-Value="enrollmentDetail.SubjectsGroupStudied" placeholder="7) Subjects Group Studied" />
                 </div>
                 <div class="col-md-3">
-                    <label for="PreviousAcademicYear">Previous Academic Year</label>
+                    <label for="PreviousAcademicYear">8. Previous Academic Year</label>
                     <ValidationMessage For="@(() => enrollmentDetail.PreviousAcademicYear)" />
-                    <InputText class="form-control " id="PreviousAcademicYear" @bind-Value="enrollmentDetail.PreviousAcademicYear" placeholder="Previous Academic Year" />
+                    <InputText class="form-control " id="PreviousAcademicYear" @bind-Value="enrollmentDetail.PreviousAcademicYear" placeholder="8) Previous Academic Year" />
                 </div>
             </div>
 
             <div class="row g-3">
                 <div class="col-md-3">
-                    <label for="StatusPreviousYear">Status Previous Year</label>
+                    <label for="StatusPreviousYear">9. Status Previous Year</label>
                     <ValidationMessage For="@(() => enrollmentDetail.StatusPreviousYear)" />
-                    <InputText class="form-control " id="StatusPreviousYear" @bind-Value="enrollmentDetail.StatusPreviousYear" placeholder="Status Previous Year" />
+                    <InputText class="form-control " id="StatusPreviousYear" @bind-Value="enrollmentDetail.StatusPreviousYear" placeholder="9) Status Previous Year" />
                 </div>
                 <div class="col-md-3">
-                    <label for="Admitted">Admitted</label>
+                    <label for="Admitted">10. Admitted</label>
                     <ValidationMessage For="@(() => enrollmentDetail.Admitted)" />
-                    <InputText class="form-control " id="Admitted" @bind-Value="enrollmentDetail.Admitted" placeholder="Admitted" />
+                    <InputText class="form-control " id="Admitted" @bind-Value="enrollmentDetail.Admitted" placeholder="10) Admitted" />
                 </div>
                 <div class="col-md-3">
-                    <label for="PreviousClass">Previous Class</label>
+                    <label for="PreviousClass">11. Previous Class</label>
                     <ValidationMessage For="@(() => enrollmentDetail.PreviousClass)" />
-                    <InputText class="form-control " id="PreviousClass" @bind-Value="enrollmentDetail.PreviousClass" placeholder="Previous Class" />
+                    <InputText class="form-control " id="PreviousClass" @bind-Value="enrollmentDetail.PreviousClass" placeholder="11) Previous Class" />
                 </div>
                 <div class="col-md-3">
-                    <label for="Marks">Marks</label>
+                    <label for="Marks">12. Marks</label>
                     <ValidationMessage For="@(() => enrollmentDetail.Marks)" />
-                    <InputText class="form-control " id="Marks" @bind-Value="enrollmentDetail.Marks" placeholder="Marks" />
+                    <InputText class="form-control " id="Marks" @bind-Value="enrollmentDetail.Marks" placeholder="12) Marks" />
                 </div>
             </div>
 
             <div class="row g-3">
                 <div class="col-md-3">
-                    <label for="PreviousAttendance">Previous Attendance</label>
+                    <label for="PreviousAttendance">13. Previous Attendance</label>
                     <ValidationMessage For="@(() => enrollmentDetail.PreviousAttendance)" />
-                    <InputText class="form-control " id="PreviousAttendance" @bind-Value="enrollmentDetail.PreviousAttendance" placeholder="Previous Attendance" />
+                    <InputText class="form-control " id="PreviousAttendance" @bind-Value="enrollmentDetail.PreviousAttendance" placeholder="13) Previous Attendance" />
                 </div>
             </div>
 

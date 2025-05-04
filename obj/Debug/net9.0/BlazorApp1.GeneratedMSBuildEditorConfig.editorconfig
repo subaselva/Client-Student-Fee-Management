@@ -59,6 +59,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW50cm9sbG1lbnRlZGl0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/selva/source/project1/BlazorApp1/Pages/ObjectGraphDataAnnotationsValidator.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT2JqZWN0R3JhcGhEYXRhQW5ub3RhdGlvbnNWYWxpZGF0b3IucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/selva/source/project1/BlazorApp1/Pages/ProfileEdit.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZmlsZUVkaXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

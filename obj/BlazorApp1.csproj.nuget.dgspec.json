@@ -101,6 +101,10 @@
             "MudBlazor": {
               "target": "Package",
               "version": "[8.3.0, )"
+            },
+            "System.ComponentModel.Annotations": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             }
           },
           "imports": [
@@ -117,10 +121,6 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[9.0.4, 9.0.4]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
               "version": "[9.0.4, 9.0.4]"
             }
           ],

@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+
+
 using Microsoft.AspNetCore.Components.Forms;
 namespace BlazorApp1.Model
 {
@@ -89,11 +91,11 @@ namespace BlazorApp1.Model
         [Required(ErrorMessage = "Blood group is required.")]
         public string BloodGroup { get; set; }
 
+        [Required]
+        public StudentProfile Profile { get; set; } = new StudentProfile();
 
-        public StudentProfile Profile { get; set; }
-
-       
-        public EnrollmentDetail Enrollment { get; set; }
+        [Required]
+        public EnrollmentDetail Enrollment { get; set; } = new EnrollmentDetail();
 
     }
 }

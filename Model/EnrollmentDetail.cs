@@ -7,37 +7,45 @@ namespace BlazorApp1.Model
         [Key]
         public int Id { get; set; }
         public int StudentId { get; set; } // Foreign Key
-        [Required]
+        
+        [Required(ErrorMessage = "Admission number is required")]
         public int AdmissionNumber { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Admission date is required")]
         public DateTime AdmissionDate { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Class Roll Number is required")]
         public int ClassRollNo { get; set; }
-        [Required]
-        public string? MediumOfInstruction { get; set; }
 
-        [Required]
-        public string? LanguagesGroupStudied { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Medium of Instruction is required")]
+        public string MediumOfInstruction { get; set; }
 
-        public string? AcademicGroupStudied { get; set; }
-        [Required]
-        public string? SubjectsGroupStudied { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Languages Group Studied is required")]
+        public string LanguagesGroupStudied { get; set; }
 
-        public string? PreviousAcademicYear { get; set; }
-        [Required]
-        public string? StatusPreviousYear { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Academic Group Studied is required")]
+        public string AcademicGroupStudied { get; set; }
 
-        public string? Admitted { get; set; }
-        [Required]
-        public string? PreviousClass { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Subjects Group Studied is required")]
+        public string SubjectsGroupStudied { get; set; }
 
-        public string? Marks { get; set; }
-        [Required]
-        public string? PreviousAttendance { get; set; }
+        [Required(ErrorMessage = "Previous Academic Year is required")]
+        public string PreviousAcademicYear { get; set; }
+
+        [Required(ErrorMessage = "Status of Previous Year is required")]
+        public string StatusPreviousYear { get; set; }
+
+        [Required(ErrorMessage = "Admitted status is required")]
+        public string Admitted { get; set; }
+
+        [Required(ErrorMessage = "Previous Class is required")]
+        public string PreviousClass { get; set; }
+
+        [Required(ErrorMessage = "Marks are required")]
+        public string Marks { get; set; }
+
+        [Required(ErrorMessage = "Previous Attendance is required")]
+        public string PreviousAttendance { get; set; }
 
     }
 
