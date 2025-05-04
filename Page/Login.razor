@@ -62,7 +62,16 @@
         {
             Error = result.Error!;
             ShowErrors = true;
+
+            // Redirect to /register if user is not found or unauthorized
+            if (Error.Contains("not found", StringComparison.OrdinalIgnoreCase) ||
+                Error.Contains("invalid", StringComparison.OrdinalIgnoreCase))
+            {
+                await Task.Delay(2000); // Optional delay to let user read the error
+                NavigationManager.NavigateTo("/register");
+            }
         }
     }
+
 
 }

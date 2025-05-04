@@ -4,13 +4,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\BlazorApp1.styles.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-CH83eQ7IUPGqcjfatO4IEbPuBvPBjZxf8F15fwGg/6k="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"5421"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022CH83eQ7IUPGqcjfatO4IEbPuBvPBjZxf8F15fwGg/6k=\u0022"},{"Name":"Last-Modified","Value":"Sun, 04 May 2025 09:17:11 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"5421"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022CH83eQ7IUPGqcjfatO4IEbPuBvPBjZxf8F15fwGg/6k=\u0022"},{"Name":"Last-Modified","Value":"Sun, 04 May 2025 15:28:30 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="BlazorApp1.w6s9ubiu5j.styles.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\BlazorApp1.styles.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"w6s9ubiu5j"},{"Name":"integrity","Value":"sha256-CH83eQ7IUPGqcjfatO4IEbPuBvPBjZxf8F15fwGg/6k="},{"Name":"label","Value":"BlazorApp1.styles.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"5421"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022CH83eQ7IUPGqcjfatO4IEbPuBvPBjZxf8F15fwGg/6k=\u0022"},{"Name":"Last-Modified","Value":"Sun, 04 May 2025 09:17:11 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"5421"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022CH83eQ7IUPGqcjfatO4IEbPuBvPBjZxf8F15fwGg/6k=\u0022"},{"Name":"Last-Modified","Value":"Sun, 04 May 2025 15:28:30 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="css/app.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\app.css'))</AssetFile>

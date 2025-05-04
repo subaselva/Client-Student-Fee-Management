@@ -9,7 +9,7 @@
 <h3 class="title">🎓 Student Fee Management</h3>
 
 <div class="d-flex justify-content-between mb-3">
-    <a href="/fees" class="btn btn-primary d-flex align-items-center gap-2">
+    <a href="/fees" class="btn btn-primary d-flex align-items-center gap-2" style="width: fit-content; height: 100%; background-color: white; color: red;">
         <i class="bi bi-plus-circle"></i> Add Student
     </a>
     <input @bind="SearchQuery" @bind:event="oninput" class="form-control w-25" placeholder="🔍 Search by Name or Reg No..." />
@@ -63,15 +63,24 @@
         {
             <tr>
                 <td>@fee.RegistrationNumber</td>
-                <td class="@(IsFeeZero(fee) ? "table-danger fw-bold" : IsAllPaid(fee) ? "table-warning" : "")">
+
+                @{
+                    var studentClass = fee.AdmissionAmountPaid == 0 || fee.FirstTermAmountPaid == 0 || fee.SecondTermAmountPaid == 0
+                    ? "table-danger"
+                    : (fee.AdmissionFee != fee.AdmissionAmountPaid || fee.FirstTermFee != fee.FirstTermAmountPaid || fee.SecondTermFee != fee.SecondTermAmountPaid
+                    ? "table-warning"
+                    : "");
+                }
+                <td class="@studentClass">
                     @fee.StudentName
                 </td>
 
                 <td>@fee.IsNewStudent</td>
                 <td>@fee.ClassSection</td>
                 <td>@fee.AdmissionFee</td>
-                <td class="@(fee.AdmissionAmountPaid == 0 ? "table-danger" : fee.AdmissionAmountPaid == null ? "" : "table-warning")">
-                    @(fee.AdmissionAmountPaid?.ToString() ?? "N/A")
+                <td class="@(fee.AdmissionAmountPaid == 0 ? "table-danger" :
+             (fee.AdmissionFee != fee.AdmissionAmountPaid ? "table-warning" : ""))">
+                    @fee.AdmissionFee
                 </td>
 
 
@@ -83,8 +92,9 @@
                 <td>@fee.FirstTermFee</td>
 
 
-                <td class="@(fee.FirstTermAmountPaid == 0 ? "table-danger" : fee.FirstTermAmountPaid == null ? "" : "table-warning")">
-                    @(fee.FirstTermAmountPaid?.ToString() ?? "N/A")
+                <td class="@(fee.FirstTermAmountPaid == 0 ? "table-danger" :
+             (fee.FirstTermFee != fee.FirstTermAmountPaid ? "table-warning" : ""))">
+                    @fee.FirstTermFee
                 </td>
 
                 <td>@fee.FirstTermDue</td>
@@ -92,8 +102,9 @@
                 <td>@(fee.FirstTermDate?.ToShortDateString() ?? "N/A")</td>
                 <td>@fee.SecondTermFee</td>
 
-                <td class="@(fee.SecondTermAmountPaid == 0 ? "table-danger" :fee.SecondTermAmountPaid == null ? "" : "table-warning")">
-                    @(fee.SecondTermAmountPaid?.ToString() ?? "N/A")
+                <td class="@(fee.SecondTermAmountPaid == 0 ? "table-danger" :
+             (fee.SecondTermFee != fee.SecondTermAmountPaid ? "table-warning" : ""))">
+                    @fee.SecondTermFee
                 </td>
 
 
@@ -102,9 +113,17 @@
                 <td>@(fee.SecondTermDate?.ToShortDateString() ?? "N/A")</td>
                 <td>@fee.AnnualFees</td>
 
-                <td class="@(IsFeeZero(fee) ? "table-danger" : IsAllPaid(fee) ? "table-warning" : "")">
+                @{
+                    var duesClass = fee.AdmissionAmountPaid == 0 || fee.FirstTermAmountPaid == 0 || fee.SecondTermAmountPaid == 0
+                    ? "table-danger"
+                    : (fee.AdmissionFee != fee.AdmissionAmountPaid || fee.FirstTermFee != fee.FirstTermAmountPaid || fee.SecondTermFee != fee.SecondTermAmountPaid
+                    ? "table-warning"
+                    : "");
+                }
+                <td class="@duesClass">
                     @fee.Dues
                 </td>
+
 
 
                 <td>@fee.Concession</td>
