@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "HCS638JF/Zs=",
+  "dgSpecHash": "XLEVXBgA2Ao=",
   "success": true,
   "projectFilePath": "C:\\Users\\selva\\source\\project1\\BlazorApp1\\BlazorApp1.csproj",
   "expectedPackageFiles": [
@@ -80,8 +80,7 @@
     "C:\\Users\\selva\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\selva\\.nuget\\packages\\system.text.json\\9.0.3\\system.text.json.9.0.3.nupkg.sha512",
     "C:\\Users\\selva\\.nuget\\packages\\system.threading.channels\\9.0.1\\system.threading.channels.9.0.1.nupkg.sha512",
-    "C:\\Users\\selva\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.4\\microsoft.netcore.app.ref.9.0.4.nupkg.sha512",
-    "C:\\Users\\selva\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\9.0.4\\microsoft.netcore.app.runtime.mono.browser-wasm.9.0.4.nupkg.sha512"
+    "C:\\Users\\selva\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.4\\microsoft.netcore.app.ref.9.0.4.nupkg.sha512"
   ],
   "logs": []
 }

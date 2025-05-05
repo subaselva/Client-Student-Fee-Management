@@ -114,10 +114,6 @@
             {
               "name": "Microsoft.NETCore.App.Ref",
               "version": "[9.0.4, 9.0.4]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-              "version": "[9.0.4, 9.0.4]"
             }
           ],
           "frameworkReferences": {
