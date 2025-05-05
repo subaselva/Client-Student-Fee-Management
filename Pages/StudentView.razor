@@ -1,67 +1,24 @@
 ﻿@page "/students"
 @inject HttpClient Http
-@inject NavigationManager Navigation
-@inject IJSRuntime JS
-@code {
-    private List<Student> students = new();
-    private bool isLoading = true;
 
-    protected override async Task OnInitializedAsync()
-    {
-        try
-        {
-            students = await Http.GetFromJsonAsync<List<Student>>("api/students/view-only");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error fetching students: {ex.Message}");
-        }
-        isLoading = false;
-    }
+<h3 class="text-xl font-semibold mb-4">Student List</h3>
 
-    private async Task DeleteStudent(int studentId)
-    {
-        bool confirmDelete = await JS.InvokeAsync<bool>("confirm", "Are you sure you want to delete this student?");
-        if (!confirmDelete) return;
-
-        try
-        {
-            var response = await Http.DeleteAsync($"api/students/admin/delete/{studentId}");
-            if (response.IsSuccessStatusCode)
-            {
-                students.RemoveAll(s => s.Id == studentId);
-            }
-            else
-            {
-                Console.WriteLine("Failed to delete student.");
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error deleting student: {ex.Message}");
-        }
-    }
-
-    private void EditStudent(int studentId)
-    {
-        Navigation.NavigateTo($"/student-form/{studentId:int?}");
-    }
-}
-
-<h3>Student List</h3>
+<!-- 🔍 Search Inputs -->
+<div class="mb-4 flex gap-4">
+    <input class="form-control" @bind="searchRoll" placeholder="Search by Roll Number" />
+    <input class="form-control" @bind="searchName" placeholder="Search by Name" />
+</div>
 
 @if (isLoading)
 {
     <p>Loading students...</p>
 }
-else if (students.Count > 0)
+else if (filteredStudents.Any())
 {
-    @foreach (var student in students)
+    @foreach (var student in filteredStudents)
     {
         <div class="student-card">
             <StudentDetails Student="student" />
-            <button class=" btn btn-primary btn-sm w-100"@onclick="() => EditStudent(student.Id)">✏️ Edit</button>
-            <button class="btn btn-primary btn-sm w-100"@onclick="() => DeleteStudent(student.Id)">🗑️ Delete</button>
         </div>
         <hr />
     }
@@ -69,4 +26,33 @@ else if (students.Count > 0)
 else
 {
     <p>No students found.</p>
+}
+
+@code {
+    private List<BlazorApp1.Model.Student> students = new();
+    private bool isLoading = true;
+
+    // Search inputs
+    private string searchRoll = "";
+    private string searchName = "";
+
+    // Computed property for filtering
+    private IEnumerable<BlazorApp1.Model.Student> filteredStudents => students
+        .Where(s =>
+            (string.IsNullOrWhiteSpace(searchRoll) || s.RollNumber.Contains(searchRoll, StringComparison.OrdinalIgnoreCase)) &&
+            (string.IsNullOrWhiteSpace(searchName) || s.Name.Contains(searchName, StringComparison.OrdinalIgnoreCase))
+        );
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            students = await Http.GetFromJsonAsync<List<BlazorApp1.Model.Student>>("api/students/view-only");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching students: {ex.Message}");
+        }
+        isLoading = false;
+    }
 }

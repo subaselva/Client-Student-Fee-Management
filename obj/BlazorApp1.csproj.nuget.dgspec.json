@@ -55,6 +55,10 @@
               "target": "Package",
               "version": "[4.5.0, )"
             },
+            "Microsoft.AspNetCore.Components": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
             "Microsoft.AspNetCore.Components.Authorization": {
               "target": "Package",
               "version": "[9.0.1, )"
@@ -97,6 +101,10 @@
             "MudBlazor": {
               "target": "Package",
               "version": "[8.3.0, )"
+            },
+            "System.ComponentModel.Annotations": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             }
           },
           "imports": [
